@@ -1,0 +1,33 @@
+{
+  "name": "extendssoftware/extends-framework",
+  "description": "A simplistic yet powerful REST API framework built with PHP 7.",
+  "homepage": "https://github.com/extendssoftware/extends-framework",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Vincent van Dijk",
+      "email": "vincent@extends.nl",
+      "homepage": "https://www.extends.nl/"
+    }
+  ],
+  "require": {
+    "php": "^7.2.0",
+    "ext-json": "*",
+    "ext-pdo": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.0.0",
+    "mikey179/vfsstream": "^v1.0.0",
+    "ext-xdebug": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "ExtendsFramework\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "ExtendsFramework\\": "test/"
+    }
+  }
+}
