@@ -9,7 +9,7 @@ use ExtendsFramework\Http\Request\RequestException;
 class InvalidRequestBody extends Exception implements RequestException
 {
     /**
-     * When request body is invalid JSON with $error.
+     * When request body is invalid JSON with error.
      *
      * @param string $error
      */

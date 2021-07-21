@@ -10,7 +10,7 @@ use ExtendsFramework\Http\Response\ResponseInterface;
 interface MiddlewareChainInterface
 {
     /**
-     * Proceed middleware chain with $request.
+     * Proceed middleware chain with request.
      *
      * To avoid (serious) side effects, the chain should not be called more the once.
      *

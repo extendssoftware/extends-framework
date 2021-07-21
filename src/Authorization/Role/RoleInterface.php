@@ -13,7 +13,7 @@ interface RoleInterface
     public function getName(): string;
 
     /**
-     * Verify that $role is equal.
+     * Verify that role is equal.
      *
      * Role is considered equal when names are exact the same, case sensitive.
      *

@@ -37,7 +37,7 @@ class AliasResolver implements ResolverInterface
     }
 
     /**
-     * If resolver has an alias for $key, the alias will be used to get the service from the service locator. A
+     * If resolver has an alias for key, the alias will be used to get the service from the service locator. A
      * infinite loop between aliases and services will not be detected.
      *
      * @inheritDoc
@@ -48,7 +48,7 @@ class AliasResolver implements ResolverInterface
     }
 
     /**
-     * Register $alias for $key.
+     * Register alias for key.
      *
      * @param string $key
      * @param string $alias

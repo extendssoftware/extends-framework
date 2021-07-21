@@ -8,7 +8,7 @@ use ExtendsFramework\Logger\LogInterface;
 interface WriterInterface
 {
     /**
-     * Write $log.
+     * Write log.
      *
      * @param LogInterface $log
      *

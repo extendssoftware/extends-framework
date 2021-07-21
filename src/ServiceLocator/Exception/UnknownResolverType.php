@@ -9,7 +9,7 @@ use ExtendsFramework\ServiceLocator\ServiceLocatorException;
 class UnknownResolverType extends Exception implements ServiceLocatorException
 {
     /**
-     * Resolver for $type not found.
+     * Resolver for type not found.
      *
      * @param string $resolver
      */

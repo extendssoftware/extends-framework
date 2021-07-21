@@ -23,7 +23,7 @@ interface DefinitionInterface
     public function getOperands(): array;
 
     /**
-     * Get option for $name.
+     * Get option for name.
      *
      * @param string    $name
      * @param bool|null $long
@@ -34,7 +34,7 @@ interface DefinitionInterface
     public function getOption(string $name, bool $long = null): OptionInterface;
 
     /**
-     * Get operand for $position.
+     * Get operand for position.
      *
      * @param int $position
      *

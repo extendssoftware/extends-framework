@@ -20,7 +20,7 @@ interface RouteMatchInterface
     public function getPathOffset(): int;
 
     /**
-     * Merge with other $routeMatch.
+     * Merge with other routeMatch.
      *
      * Used for nested routes.
      *

@@ -22,7 +22,7 @@ class InterruptValidator implements ValidatorInterface
     private bool $interrupt;
 
     /**
-     * Set $validator and $interrupt flag.
+     * Set validator and interrupt flag.
      *
      * @param ValidatorInterface $validator
      * @param bool|null          $interrupt

@@ -57,7 +57,7 @@ class Authorizer implements AuthorizerInterface
     }
 
     /**
-     * Add $realm to authorizer.
+     * Add realm to authorizer.
      *
      * @param RealmInterface $realm
      *
@@ -71,7 +71,7 @@ class Authorizer implements AuthorizerInterface
     }
 
     /**
-     * Get authorization information for $identity.
+     * Get authorization information for identity.
      *
      * When no authorization information can be found, an empty instance will be returned.
      *

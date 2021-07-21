@@ -33,7 +33,7 @@ class FileLoader implements LoaderInterface
     }
 
     /**
-     * Add glob $path.
+     * Add glob path.
      *
      * @param string $directory
      * @param string $regex

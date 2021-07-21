@@ -6,9 +6,9 @@ namespace ExtendsFramework\Shell;
 interface ShellInterface
 {
     /**
-     * Match $arguments to corresponding command.
+     * Match arguments to corresponding command.
      *
-     * When $arguments can not be matched, null will be returned.
+     * When arguments can not be matched, null will be returned.
      *
      * @param array $arguments
      *

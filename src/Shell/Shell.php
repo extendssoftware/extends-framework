@@ -151,7 +151,7 @@ class Shell implements ShellInterface
     }
 
     /**
-     * Add $command to shell.
+     * Add command to shell.
      *
      * Commands will be processed in chronological order.
      *
@@ -167,7 +167,7 @@ class Shell implements ShellInterface
     }
 
     /**
-     * Get command with $name.
+     * Get command with name.
      *
      * @param string $name
      *

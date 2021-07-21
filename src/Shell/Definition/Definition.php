@@ -71,7 +71,7 @@ class Definition implements DefinitionInterface
     }
 
     /**
-     * Add $operand to definition.
+     * Add operand to definition.
      *
      * @param OperandInterface $operand
      *
@@ -85,7 +85,7 @@ class Definition implements DefinitionInterface
     }
 
     /**
-     * Add $option to definition.
+     * Add option to definition.
      *
      * @param OptionInterface $option
      *

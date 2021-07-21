@@ -8,7 +8,7 @@ use ExtendsFramework\Http\Response\ResponseInterface;
 interface RendererInterface
 {
     /**
-     * Render $response.
+     * Render response.
      *
      * @param ResponseInterface $response
      *

@@ -9,7 +9,7 @@ use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
 interface ResolverInterface
 {
     /**
-     * Check if resolver can resolve service for $key.
+     * Check if resolver can resolve service for key.
      *
      * @param string $key
      *
@@ -18,7 +18,7 @@ interface ResolverInterface
     public function hasService(string $key): bool;
 
     /**
-     * Get service for $key.
+     * Get service for key.
      *
      * @param string                  $key
      * @param ServiceLocatorInterface $serviceLocator
@@ -31,7 +31,7 @@ interface ResolverInterface
     public function getService(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): object;
 
     /**
-     * Create new resolver from $config.
+     * Create new resolver from config.
      *
      * @param array $services
      *

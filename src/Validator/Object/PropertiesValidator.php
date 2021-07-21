@@ -131,9 +131,9 @@ class PropertiesValidator extends AbstractValidator
     }
 
     /**
-     * Add $validator for $property.
+     * Add validator for property.
      *
-     * An existing validator for $property will be overwritten.
+     * An existing validator for property will be overwritten.
      *
      * @param string             $property
      * @param ValidatorInterface $validator

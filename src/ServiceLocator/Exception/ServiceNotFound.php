@@ -9,7 +9,7 @@ use ExtendsFramework\ServiceLocator\ServiceLocatorException;
 class ServiceNotFound extends Exception implements ServiceLocatorException
 {
     /**
-     * Service with $key not found.
+     * Service with key not found.
      *
      * @param string $key
      */

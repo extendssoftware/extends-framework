@@ -9,9 +9,9 @@ use ExtendsFramework\Router\Route\RouteMatchInterface;
 interface RouterInterface
 {
     /**
-     * Route $request to corresponding controller.
+     * Route request to corresponding controller.
      *
-     * An exception will be thrown when $request can not be matched. A route can throw an more detailed exception.
+     * An exception will be thrown when request can not be matched. A route can throw an more detailed exception.
      *
      * @param RequestInterface $request
      *
@@ -21,7 +21,7 @@ interface RouterInterface
     public function route(RequestInterface $request): RouteMatchInterface;
 
     /**
-     * Assemble route $path into a request.
+     * Assemble route path into a request.
      *
      * @param string     $path       Consecutive route names separated with a forward slash.
      * @param array|null $parameters Parameters to use when assembling routes.

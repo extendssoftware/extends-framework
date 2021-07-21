@@ -6,9 +6,9 @@ namespace ExtendsFramework\Http\Response;
 interface ResponseInterface
 {
     /**
-     * Add header with $name for $value.
+     * Add header with name for value.
      *
-     * If header with $name already exists, it will be added to the array.
+     * If header with name already exists, it will be added to the array.
      *
      * @param string $name
      * @param string $value
@@ -32,9 +32,9 @@ interface ResponseInterface
     public function getHeaders(): array;
 
     /**
-     * Get header value for $name.
+     * Get header value for name.
      *
-     * Default value $default will be returned when header with $name does not exists.
+     * Default value default will be returned when header with name does not exists.
      *
      * @param string $name
      * @param mixed  $default
@@ -51,7 +51,7 @@ interface ResponseInterface
     public function getStatusCode(): int;
 
     /**
-     * Return new instance with $body.
+     * Return new instance with body.
      *
      * @param mixed $body
      *
@@ -60,9 +60,9 @@ interface ResponseInterface
     public function withBody($body): ResponseInterface;
 
     /**
-     * Set header with $name for $value.
+     * Set header with name for value.
      *
-     * If header with $name already exists, it will be overwritten.
+     * If header with name already exists, it will be overwritten.
      *
      * @param string $name
      * @param string $value
@@ -72,7 +72,7 @@ interface ResponseInterface
     public function withHeader(string $name, string $value): ResponseInterface;
 
     /**
-     * Return new instance with $headers.
+     * Return new instance with headers.
      *
      * @param array $headers
      *
@@ -81,7 +81,7 @@ interface ResponseInterface
     public function withHeaders(array $headers): ResponseInterface;
 
     /**
-     * Return new instance with $statusCode.
+     * Return new instance with statusCode.
      *
      * @param int $statusCode
      *

@@ -8,9 +8,9 @@ use ExtendsFramework\Http\Request\RequestInterface;
 interface RouteInterface
 {
     /**
-     * Match route against $request.
+     * Match route against request.
      *
-     * Parameter $pathOffset is used to pass the request uri path offset to other routes.
+     * Parameter pathOffset is used to pass the request uri path offset to other routes.
      *
      * @param RequestInterface $request
      * @param int              $pathOffset
@@ -23,7 +23,7 @@ interface RouteInterface
     /**
      * Assemble path into request.
      *
-     * An exception will be thrown when routes for $path can not be found.
+     * An exception will be thrown when routes for path can not be found.
      *
      * @param RequestInterface $request
      * @param array            $path

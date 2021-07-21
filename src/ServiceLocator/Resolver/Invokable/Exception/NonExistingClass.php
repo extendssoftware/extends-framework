@@ -9,7 +9,7 @@ use ExtendsFramework\ServiceLocator\Resolver\Invokable\InvokableResolverExceptio
 class NonExistingClass extends Exception implements InvokableResolverException
 {
     /**
-     * Invokable $class must be an existing class.
+     * Invokable class must be an existing class.
      *
      * @param string $class
      */

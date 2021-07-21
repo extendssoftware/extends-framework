@@ -42,7 +42,7 @@ class FactoryResolver implements ResolverInterface
     /**
      * When the factory is a string, a new instance will be created and replaces the string.
      *
-     * An exception will be thrown when $factory is a string and not an subclass of ServiceFactoryInterface.
+     * An exception will be thrown when factory is a string and not an subclass of ServiceFactoryInterface.
      *
      * @inheritDoc
      */
@@ -67,7 +67,7 @@ class FactoryResolver implements ResolverInterface
     }
 
     /**
-     * Register $factory for $key.
+     * Register factory for key.
      *
      * @param string $key
      * @param string $factory

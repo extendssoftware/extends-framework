@@ -38,7 +38,7 @@ class InvokableResolver implements ResolverInterface
     }
 
     /**
-     * An exception will be thrown when $invokable is not a existing class.
+     * An exception will be thrown when invokable is not a existing class.
      *
      * @inheritDoc
      */
@@ -53,7 +53,7 @@ class InvokableResolver implements ResolverInterface
     }
 
     /**
-     * Register $invokable for $key.
+     * Register invokable for key.
      *
      * @param string $key
      * @param string $invokable

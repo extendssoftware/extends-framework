@@ -40,7 +40,7 @@ class RouterFactory implements ServiceFactoryInterface
     }
 
     /**
-     * Create RouterInterface from $config.
+     * Create RouterInterface from config.
      *
      * @param ServiceLocatorInterface $serviceLocator
      * @param array                   $config

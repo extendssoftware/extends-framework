@@ -9,7 +9,7 @@ use ExtendsFramework\Shell\Definition\DefinitionException;
 class OptionNotFound extends Exception implements DefinitionException
 {
     /**
-     * No option with $name.
+     * No option with name.
      *
      * @param string    $name
      * @param bool|null $long

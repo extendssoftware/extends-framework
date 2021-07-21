@@ -37,7 +37,7 @@ interface LogInterface
     public function getMetaData(): array;
 
     /**
-     * Return new log with $message.
+     * Return new log with message.
      *
      * @param string $message
      *
@@ -46,7 +46,7 @@ interface LogInterface
     public function withMessage(string $message): LogInterface;
 
     /**
-     * Return new log with $metaData.
+     * Return new log with metaData.
      *
      * @param array $metaData
      *
@@ -55,7 +55,7 @@ interface LogInterface
     public function withMetaData(array $metaData): LogInterface;
 
     /**
-     * Return new log with $key and $value added to the meta data.
+     * Return new log with key and value added to the meta data.
      *
      * @param string $key
      * @param mixed  $value

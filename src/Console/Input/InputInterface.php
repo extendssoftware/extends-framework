@@ -8,7 +8,7 @@ interface InputInterface
     /**
      * Read a line from the input.
      *
-     * Reading will stop when $length or end of line is reached.
+     * Reading will stop when length or end of line is reached.
      *
      * @param int|null $length
      *
@@ -19,7 +19,7 @@ interface InputInterface
     /**
      * Read a character from the input.
      *
-     * Characters in $allowed are allowed, else every character is allowed.
+     * Characters in allowed are allowed, else every character is allowed.
      *
      * @param string|null $allowed
      *

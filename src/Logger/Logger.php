@@ -58,9 +58,9 @@ class Logger implements LoggerInterface
     }
 
     /**
-     * Add $writer to logger.
+     * Add writer to logger.
      *
-     * When $interrupt is true and the writer's write method will not throw an exception, the next writer won't be
+     * When interrupt is true and the writer's write method will not throw an exception, the next writer won't be
      * called.
      *
      * @param WriterInterface $writer

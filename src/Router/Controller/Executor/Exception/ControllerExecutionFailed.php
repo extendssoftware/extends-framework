@@ -10,7 +10,7 @@ use ExtendsFramework\Router\Controller\Executor\ExecutorException;
 class ControllerExecutionFailed extends Exception implements ExecutorException
 {
     /**
-     * When controller execution throws $exception.
+     * When controller execution throws exception.
      *
      * @param ControllerException $exception
      */

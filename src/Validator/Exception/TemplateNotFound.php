@@ -9,7 +9,7 @@ use ExtendsFramework\Validator\ValidatorException;
 class TemplateNotFound extends Exception implements ValidatorException
 {
     /**
-     * Template not found for $key.
+     * Template not found for key.
      *
      * @param string $key
      */

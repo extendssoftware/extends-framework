@@ -38,7 +38,7 @@ class ClosureResolver implements ResolverInterface
     }
 
     /**
-     * The closure will be called with the parameters $key and $serviceLocator in specified order.
+     * The closure will be called with the parameters key and serviceLocator in specified order.
      *
      * @inheritDoc
      */
@@ -48,7 +48,7 @@ class ClosureResolver implements ResolverInterface
     }
 
     /**
-     * Register $closure for $key.
+     * Register closure for key.
      *
      * @param string  $key
      * @param Closure $closure

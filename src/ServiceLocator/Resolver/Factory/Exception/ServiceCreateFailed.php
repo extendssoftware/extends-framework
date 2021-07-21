@@ -10,7 +10,7 @@ use Throwable;
 class ServiceCreateFailed extends Exception implements FactoryResolverException
 {
     /**
-     * When service create for $key fails with $exception.
+     * When service create for key fails with exception.
      *
      * @param string    $key
      * @param Throwable $exception

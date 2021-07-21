@@ -33,7 +33,7 @@ class Authenticator implements AuthenticatorInterface
     }
 
     /**
-     * Add $realm to authenticator.
+     * Add realm to authenticator.
      *
      * @param RealmInterface $realm
      *

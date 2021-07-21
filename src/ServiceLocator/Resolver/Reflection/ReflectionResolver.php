@@ -70,7 +70,7 @@ class ReflectionResolver implements ResolverInterface
     }
 
     /**
-     * Register $class for $key.
+     * Register class for key.
      *
      * @param string $key
      * @param string $class

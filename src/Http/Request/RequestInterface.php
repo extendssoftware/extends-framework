@@ -8,7 +8,7 @@ use ExtendsFramework\Http\Request\Uri\UriInterface;
 interface RequestInterface
 {
     /**
-     * Merge $name and $value into existing attributes and return new instance.
+     * Merge name and value into existing attributes and return new instance.
      *
      * @param string $name
      * @param mixed  $value
@@ -18,9 +18,9 @@ interface RequestInterface
     public function andAttribute(string $name, $value): RequestInterface;
 
     /**
-     * Add header with $name for $value.
+     * Add header with name for value.
      *
-     * If header with $name already exists, it will be added to the array.
+     * If header with name already exists, it will be added to the array.
      *
      * @param string $name
      * @param mixed  $value
@@ -37,9 +37,9 @@ interface RequestInterface
     public function getAttributes(): array;
 
     /**
-     * Get attribute for $key.
+     * Get attribute for key.
      *
-     * Default value $default will be returned when attribute for $key does not exists.
+     * Default value default will be returned when attribute for key does not exists.
      *
      * @param string $key
      * @param mixed  $default
@@ -63,9 +63,9 @@ interface RequestInterface
     public function getHeaders(): array;
 
     /**
-     * Get header value for $name.
+     * Get header value for name.
      *
-     * Default value $default will be returned when header with $name does not exists.
+     * Default value default will be returned when header with name does not exists.
      *
      * @param string $name
      * @param mixed  $default
@@ -89,7 +89,7 @@ interface RequestInterface
     public function getUri(): UriInterface;
 
     /**
-     * Return new instance with $attributes.
+     * Return new instance with attributes.
      *
      * @param array $attributes
      *
@@ -98,7 +98,7 @@ interface RequestInterface
     public function withAttributes(array $attributes): RequestInterface;
 
     /**
-     * Return new instance with $body.
+     * Return new instance with body.
      *
      * @param mixed $body
      *
@@ -107,9 +107,9 @@ interface RequestInterface
     public function withBody($body): RequestInterface;
 
     /**
-     * Set header with $name for $value.
+     * Set header with name for value.
      *
-     * If header with $name already exists, it will be overwritten.
+     * If header with name already exists, it will be overwritten.
      *
      * @param string $name
      * @param string $value
@@ -119,7 +119,7 @@ interface RequestInterface
     public function withHeader(string $name, string $value): RequestInterface;
 
     /**
-     * Return new instance with $headers.
+     * Return new instance with headers.
      *
      * @param array $headers
      *
@@ -128,7 +128,7 @@ interface RequestInterface
     public function withHeaders(array $headers): RequestInterface;
 
     /**
-     * Return new instance with $method.
+     * Return new instance with method.
      *
      * @param string $method
      *
@@ -137,7 +137,7 @@ interface RequestInterface
     public function withMethod(string $method): RequestInterface;
 
     /**
-     * Return new instance with $uri.
+     * Return new instance with uri.
      *
      * @param UriInterface $uri
      *

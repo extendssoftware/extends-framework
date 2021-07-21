@@ -9,7 +9,7 @@ use ExtendsFramework\Shell\ShellException;
 class CommandNotFound extends Exception implements ShellException
 {
     /**
-     * Command not found for $name.
+     * Command not found for name.
      *
      * @param string $name
      */

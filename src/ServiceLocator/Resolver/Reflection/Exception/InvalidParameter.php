@@ -10,7 +10,7 @@ use ReflectionParameter;
 class InvalidParameter extends Exception implements ReflectionResolverException
 {
     /**
-     * Unsupported type for $parameter.
+     * Unsupported type for parameter.
      *
      * @param ReflectionParameter $parameter
      */

@@ -57,9 +57,9 @@ class MiddlewareChain implements MiddlewareChainInterface
     }
 
     /**
-     * Add $middleware to the chain.
+     * Add middleware to the chain.
      *
-     * When no $priority is given, 1 will be used. Middlewares with the same $priority will be processed randomly.
+     * When no priority is given, 1 will be used. Middlewares with the same priority will be processed randomly.
      *
      * @param MiddlewareInterface $middleware
      * @param int|null            $priority

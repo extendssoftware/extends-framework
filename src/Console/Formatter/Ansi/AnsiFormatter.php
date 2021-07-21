@@ -211,9 +211,9 @@ class AnsiFormatter implements FormatterInterface
     }
 
     /**
-     * Set $format for text.
+     * Set format for text.
      *
-     * When $remove is true, format will be removed. An exception will be thrown when $format is unknown.
+     * When remove is true, format will be removed. An exception will be thrown when format is unknown.
      *
      * @param FormatInterface $format
      * @param bool|null       $remove
@@ -239,9 +239,9 @@ class AnsiFormatter implements FormatterInterface
     }
 
     /**
-     * Set color $code for foreground or background.
+     * Set color code for foreground or background.
      *
-     * An exception will be thrown when $color is unknown.
+     * An exception will be thrown when color is unknown.
      *
      * @param ColorInterface $color
      * @param bool|null      $background

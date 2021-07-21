@@ -9,7 +9,7 @@ use ExtendsFramework\Identity\IdentityInterface;
 interface RealmInterface
 {
     /**
-     * Get authorization information for $identity.
+     * Get authorization information for identity.
      *
      * @param IdentityInterface $identity
      *

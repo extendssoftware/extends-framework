@@ -53,7 +53,7 @@ abstract class AbstractWriter implements WriterInterface, StaticFactoryInterface
     }
 
     /**
-     * Decorate $log and return new instance.
+     * Decorate log and return new instance.
      *
      * @param LogInterface $log
      *
@@ -69,7 +69,7 @@ abstract class AbstractWriter implements WriterInterface, StaticFactoryInterface
     }
 
     /**
-     * Check if $log must be filtered.
+     * Check if log must be filtered.
      *
      * @param LogInterface $log
      *

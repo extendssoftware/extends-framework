@@ -8,9 +8,9 @@ use ExtendsFramework\Logger\LogInterface;
 interface FilterInterface
 {
     /**
-     * Check if $log must be filtered.
+     * Check if log must be filtered.
      *
-     * True is returned when $log must be filtered, false instead.
+     * True is returned when log must be filtered, false instead.
      *
      * @param LogInterface $log
      *

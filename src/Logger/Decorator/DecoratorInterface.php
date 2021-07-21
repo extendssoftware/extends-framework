@@ -8,9 +8,9 @@ use ExtendsFramework\Logger\LogInterface;
 interface DecoratorInterface
 {
     /**
-     * Decorate $log.
+     * Decorate log.
      *
-     * When $log is decorated, a new instance must be returned.
+     * When log is decorated, a new instance must be returned.
      *
      * @param LogInterface $log
      *

@@ -6,7 +6,7 @@ namespace ExtendsFramework\Http\Request\Uri;
 interface UriInterface
 {
     /**
-     * Merge $name and $value into existing fragment and return new instance.
+     * Merge name and value into existing fragment and return new instance.
      *
      * @param string $name
      * @param string $value
@@ -16,7 +16,7 @@ interface UriInterface
     public function andFragment(string $name, string $value): UriInterface;
 
     /**
-     * Merge $name and $value into existing query and return new instance.
+     * Merge name and value into existing query and return new instance.
      *
      * @param string $name
      * @param string $value
@@ -113,7 +113,7 @@ interface UriInterface
     ): UriInterface;
 
     /**
-     * Return new instance with $fragment.
+     * Return new instance with fragment.
      *
      * @param array $fragment
      *
@@ -122,7 +122,7 @@ interface UriInterface
     public function withFragment(array $fragment): UriInterface;
 
     /**
-     * Return new instance with $host.
+     * Return new instance with host.
      *
      * @param string $host
      *
@@ -131,7 +131,7 @@ interface UriInterface
     public function withHost(string $host): UriInterface;
 
     /**
-     * Return new instance with $pass.
+     * Return new instance with pass.
      *
      * @param string $pass
      *
@@ -140,7 +140,7 @@ interface UriInterface
     public function withPass(string $pass): UriInterface;
 
     /**
-     * Return new instance with $path.
+     * Return new instance with path.
      *
      * @param string $path
      *
@@ -149,7 +149,7 @@ interface UriInterface
     public function withPath(string $path): UriInterface;
 
     /**
-     * Return new instance with $port.
+     * Return new instance with port.
      *
      * @param int $port
      *
@@ -158,7 +158,7 @@ interface UriInterface
     public function withPort(int $port): UriInterface;
 
     /**
-     * Return new instance with $query.
+     * Return new instance with query.
      *
      * @param array $query
      *
@@ -167,7 +167,7 @@ interface UriInterface
     public function withQuery(array $query): UriInterface;
 
     /**
-     * Return new instance with $scheme.
+     * Return new instance with scheme.
      *
      * @param string $scheme
      *
@@ -176,7 +176,7 @@ interface UriInterface
     public function withScheme(string $scheme): UriInterface;
 
     /**
-     * Return new instance with $user.
+     * Return new instance with user.
      *
      * @param string $user
      *
@@ -185,7 +185,7 @@ interface UriInterface
     public function withUser(string $user): UriInterface;
 
     /**
-     * Return new instance with $user and $pass user info.
+     * Return new instance with user and pass user info.
      *
      * @param string $user
      * @param string $pass

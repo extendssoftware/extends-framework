@@ -28,7 +28,7 @@ interface DescriptorInterface
     ): DescriptorInterface;
 
     /**
-     * Describe $command.
+     * Describe command.
      *
      * @param AboutInterface   $about
      * @param CommandInterface $command
@@ -39,7 +39,7 @@ interface DescriptorInterface
     public function command(AboutInterface $about, CommandInterface $command, bool $short = null): DescriptorInterface;
 
     /**
-     * Suggest given $command.
+     * Suggest given command.
      *
      * @param CommandInterface|null $command
      *
@@ -48,7 +48,7 @@ interface DescriptorInterface
     public function suggest(CommandInterface $command = null): DescriptorInterface;
 
     /**
-     * Describe $exception.
+     * Describe exception.
      *
      * @param Throwable $exception
      *
@@ -59,7 +59,7 @@ interface DescriptorInterface
     /**
      * Set verbosity.
      *
-     * With a higher $verbosity, output will be more verbose.
+     * With a higher verbosity, output will be more verbose.
      *
      * @param int $verbosity
      *

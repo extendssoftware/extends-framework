@@ -44,7 +44,7 @@ abstract class AbstractLogicalValidator extends AbstractValidator
     }
 
     /**
-     * Add $validator.
+     * Add validator.
      *
      * @param ValidatorInterface $validator
      *

@@ -16,7 +16,7 @@ class AuthorizationInfo implements AuthorizationInfoInterface
     private array $permissions = [];
 
     /**
-     * Authorization info $roles.
+     * Authorization info roles.
      *
      * @var RoleInterface[]
      */
@@ -39,7 +39,7 @@ class AuthorizationInfo implements AuthorizationInfoInterface
     }
 
     /**
-     * Add $permission to authorization info.
+     * Add permission to authorization info.
      *
      * @param PermissionInterface $permission
      *
@@ -53,7 +53,7 @@ class AuthorizationInfo implements AuthorizationInfoInterface
     }
 
     /**
-     * Add $role to authorization info.
+     * Add role to authorization info.
      *
      * @param RoleInterface $role
      *

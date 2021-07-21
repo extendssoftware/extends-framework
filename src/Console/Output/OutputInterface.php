@@ -8,7 +8,7 @@ use ExtendsFramework\Console\Formatter\FormatterInterface;
 interface OutputInterface
 {
     /**
-     * Send $text to output.
+     * Send text to output.
      *
      * @param string                  $text
      * @param FormatterInterface|null $formatter
@@ -19,7 +19,7 @@ interface OutputInterface
     public function text(string $text, FormatterInterface $formatter = null, int $verbosity = null): OutputInterface;
 
     /**
-     * Send $lines to output.
+     * Send lines to output.
      *
      * Ech line will be followed by a new line character.
      *
@@ -50,7 +50,7 @@ interface OutputInterface
     /**
      * Set verbosity.
      *
-     * With a higher $verbosity, output will be more verbose.
+     * With a higher verbosity, output will be more verbose.
      *
      * @param int $verbosity
      *

@@ -57,7 +57,7 @@ class StaticFactoryResolver implements ResolverInterface
     }
 
     /**
-     * Add static $factory for $key.
+     * Add static factory for key.
      *
      * @param string $key
      * @param string $factory

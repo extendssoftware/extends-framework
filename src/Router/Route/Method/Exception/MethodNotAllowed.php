@@ -57,7 +57,7 @@ class MethodNotAllowed extends LogicException implements MethodRouteException
     }
 
     /**
-     * Add allowed $methods.
+     * Add allowed methods.
      *
      * @param array $methods
      *

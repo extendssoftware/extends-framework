@@ -23,7 +23,7 @@ trait Routes
     private array $routes = [];
 
     /**
-     * Add $route to routes.
+     * Add route to routes.
      *
      * @param RouteInterface $route
      * @param string         $name
@@ -38,7 +38,7 @@ trait Routes
     }
 
     /**
-     * Route $request to child routes with $pathOffset.
+     * Route request to child routes with pathOffset.
      *
      *
      *
@@ -74,7 +74,7 @@ trait Routes
     }
 
     /**
-     * Get route for $name.
+     * Get route for name.
      *
      * @param string    $name       Name of the route.
      * @param bool|null $groupRoute If route must be a GroupRoute (when assembling and a route path is left).

@@ -8,7 +8,7 @@ use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
 interface StaticFactoryInterface
 {
     /**
-     * Create a service for $key.
+     * Create a service for key.
      *
      * @param string                  $key
      * @param ServiceLocatorInterface $serviceLocator

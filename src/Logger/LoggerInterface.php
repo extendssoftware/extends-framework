@@ -8,9 +8,9 @@ use ExtendsFramework\Logger\Priority\PriorityInterface;
 interface LoggerInterface
 {
     /**
-     * Log $message with $priority and $metaData.
+     * Log message with priority and metaData.
      *
-     * When $priority is null a CRIT (2) priority will be used.
+     * When priority is null a CRIT (2) priority will be used.
      *
      * @param string                 $message
      * @param PriorityInterface|null $priority

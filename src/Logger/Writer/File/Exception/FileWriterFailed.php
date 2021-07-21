@@ -9,7 +9,7 @@ use ExtendsFramework\Logger\Writer\File\FileWriterException;
 class FileWriterFailed extends Exception implements FileWriterException
 {
     /**
-     * Failed to write $message to $filename.
+     * Failed to write message to filename.
      *
      * @param string $message
      * @param string $filename

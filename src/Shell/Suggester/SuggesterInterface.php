@@ -8,7 +8,7 @@ use ExtendsFramework\Shell\Command\CommandInterface;
 interface SuggesterInterface
 {
     /**
-     * Find the best matching command in $commands to suggest for $phrase.
+     * Find the best matching command in commands to suggest for phrase.
      *
      * @param string           $phrase
      * @param CommandInterface ...$commands

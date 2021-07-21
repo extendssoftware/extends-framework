@@ -9,7 +9,7 @@ use ExtendsFramework\ServiceLocator\Resolver\Factory\FactoryResolverException;
 class InvalidFactoryType extends Exception implements FactoryResolverException
 {
     /**
-     * Invalid type for $factory.
+     * Invalid type for factory.
      *
      * @param string $type
      */

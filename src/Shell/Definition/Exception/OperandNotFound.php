@@ -9,7 +9,7 @@ use ExtendsFramework\Shell\Definition\DefinitionException;
 class OperandNotFound extends Exception implements DefinitionException
 {
     /**
-     * No operand for $position.
+     * No operand for position.
      *
      * @param int $position
      */

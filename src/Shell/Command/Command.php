@@ -36,7 +36,7 @@ class Command implements CommandInterface
     private array $parameters;
 
     /**
-     * Create new command for $name with $description and $definition.
+     * Create new command for name with description and definition.
      *
      * @param string              $name
      * @param string              $description

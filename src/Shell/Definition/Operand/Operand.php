@@ -13,7 +13,7 @@ class Operand implements OperandInterface
     private string $name;
 
     /**
-     * Create new OperandInterface with $name.
+     * Create new OperandInterface with name.
      *
      * @param string $name
      */

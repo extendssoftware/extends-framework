@@ -11,7 +11,7 @@ interface FormatterInterface
     /**
      * Set text foreground color.
      *
-     * An exception will be thrown when $color is unknown.
+     * An exception will be thrown when color is unknown.
      *
      * @param ColorInterface $color
      *
@@ -23,7 +23,7 @@ interface FormatterInterface
     /**
      * Set text background color.
      *
-     * An exception will be thrown when $color is unknown.
+     * An exception will be thrown when color is unknown.
      *
      * @param ColorInterface $color
      *
@@ -33,9 +33,9 @@ interface FormatterInterface
     public function setBackground(ColorInterface $color): FormatterInterface;
 
     /**
-     * Add $format for text.
+     * Add format for text.
      *
-     * An exception will be thrown when $format is unknown.
+     * An exception will be thrown when format is unknown.
      *
      * @param FormatInterface $format
      *
@@ -45,9 +45,9 @@ interface FormatterInterface
     public function addFormat(FormatInterface $format): FormatterInterface;
 
     /**
-     * Remove $format for text.
+     * Remove format for text.
      *
-     * An exception will be thrown when $format is unknown.
+     * An exception will be thrown when format is unknown.
      *
      * @param FormatInterface $format
      *
@@ -57,9 +57,9 @@ interface FormatterInterface
     public function removeFormat(FormatInterface $format): FormatterInterface;
 
     /**
-     * Set fixed width to $length.
+     * Set fixed width to length.
      *
-     * If text is longer, text will be shortened to $length.
+     * If text is longer, text will be shortened to length.
      *
      * @param int|null $length
      *
@@ -68,7 +68,7 @@ interface FormatterInterface
     public function setFixedWidth(int $length = null): FormatterInterface;
 
     /**
-     * Set text indent to $length.
+     * Set text indent to length.
      *
      * @param int|null $length
      *
@@ -77,7 +77,7 @@ interface FormatterInterface
     public function setTextIndent(int $length = null): FormatterInterface;
 
     /**
-     * Add format to $text.
+     * Add format to text.
      *
      * Formatted text will be returned.
      *

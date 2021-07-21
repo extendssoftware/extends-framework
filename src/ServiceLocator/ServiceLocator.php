@@ -83,9 +83,9 @@ class ServiceLocator implements ServiceLocatorInterface
     }
 
     /**
-     * Register a new $resolver for $key.
+     * Register a new resolver for key.
      *
-     * When a resolver is already registered for $key, it will be overwritten.
+     * When a resolver is already registered for key, it will be overwritten.
      *
      * @param ResolverInterface $resolver
      * @param string            $key

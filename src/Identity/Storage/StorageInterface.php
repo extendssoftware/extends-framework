@@ -15,7 +15,7 @@ interface StorageInterface
     public function getIdentity(): ?IdentityInterface;
 
     /**
-     * Set $identity to storage.
+     * Set identity to storage.
      *
      * @param IdentityInterface $identity
      *

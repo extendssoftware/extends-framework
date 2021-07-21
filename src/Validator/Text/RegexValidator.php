@@ -26,7 +26,7 @@ class RegexValidator extends AbstractValidator
     private string $pattern;
 
     /**
-     * Create new regular expression Validator for $pattern.
+     * Create new regular expression Validator for pattern.
      *
      * @param string $pattern
      */

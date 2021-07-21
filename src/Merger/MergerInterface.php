@@ -6,7 +6,7 @@ namespace ExtendsFramework\Merger;
 interface MergerInterface
 {
     /**
-     * Merge $right into $left.
+     * Merge right into left.
      *
      * @param array $left
      * @param array $right
