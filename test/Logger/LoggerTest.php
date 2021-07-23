@@ -6,9 +6,11 @@ namespace ExtendsFramework\Logger;
 use ExtendsFramework\Logger\Decorator\DecoratorInterface;
 use ExtendsFramework\Logger\Priority\PriorityInterface;
 use ExtendsFramework\Logger\Writer\File\Exception\FileWriterFailed;
+use ExtendsFramework\Logger\Writer\WriterException;
 use ExtendsFramework\Logger\Writer\WriterInterface;
 use org\bovigo\vfs\vfsStream;
 use PHPUnit\Framework\TestCase;
+use RuntimeException;
 
 class LoggerTest extends TestCase
 {
@@ -65,7 +67,8 @@ class LoggerTest extends TestCase
     {
         $root = vfsStream::setup();
 
-        $exception = $this->createMock(FileWriterFailed::class);
+        $exception = new class('Exception!') extends RuntimeException implements WriterException {
+        };
 
         /**
          * @var FileWriterFailed $exception
@@ -88,7 +91,7 @@ class LoggerTest extends TestCase
             ->log('Error!');
 
 
-        $this->assertNull($root->getChild('error')->getContent());
+        $this->assertSame('Exception!', $root->getChild('error')->getContent());
     }
 
     /**
