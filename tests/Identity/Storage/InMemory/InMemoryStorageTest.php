@@ -30,4 +30,18 @@ class InMemoryStorageTest extends TestCase
 
         $this->assertSame($stored, $identity);
     }
+
+    /**
+     * Empty identity.
+     *
+     * Test that storage identity property is initialized with a null value.
+     *
+     * @covers \ExtendsFramework\Identity\Storage\InMemory\InMemoryStorage::getIdentity()
+     */
+    public function testEmptyIdentity(): void
+    {
+        $storage = new InMemoryStorage();
+
+        $this->assertNull($storage->getIdentity());
+    }
 }

@@ -11,9 +11,9 @@ class InMemoryStorage implements StorageInterface
     /**
      * Temporary stored identity.
      *
-     * @var IdentityInterface
+     * @var IdentityInterface|null
      */
-    private IdentityInterface $identity;
+    private ?IdentityInterface $identity = null;
 
     /**
      * @inheritDoc
