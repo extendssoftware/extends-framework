@@ -154,6 +154,8 @@ class PropertiesValidatorTest extends TestCase
      * Factory.
      *
      * Test that factory will return correct instance.
+     *
+     * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::factory()
      */
     public function testFactory(): void
     {

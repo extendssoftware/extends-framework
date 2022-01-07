@@ -239,6 +239,8 @@ class MethodRouteTest extends TestCase
      * Methods.
      *
      * Test that constants contain correct methods.
+     *
+     * @covers \ExtendsFramework\Router\Route\Method\MethodRoute
      */
     public function testMethods(): void
     {
