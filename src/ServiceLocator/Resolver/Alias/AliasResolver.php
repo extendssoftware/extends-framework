@@ -20,7 +20,7 @@ class AliasResolver implements ResolverInterface
      */
     public static function factory(array $services): ResolverInterface
     {
-        $resolver = new static();
+        $resolver = new AliasResolver();
         foreach ($services as $key => $alias) {
             $resolver->addAlias($key, $alias);
         }

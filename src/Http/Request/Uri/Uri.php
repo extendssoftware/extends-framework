@@ -342,7 +342,7 @@ class Uri implements UriInterface
     {
         parse_str($environment['QUERY_STRING'] ?? '', $query);
 
-        $uri = (new static())
+        $uri = (new Uri())
             ->withScheme((isset($environment['HTTPS']) && $environment['HTTPS'] !== 'off') ? 'https' : 'http')
             ->withHost($environment['HTTP_HOST'])
             ->withPort((int)$environment['SERVER_PORT'])

@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace ExtendsFramework\Validator\Type;
 
+use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
+use ExtendsFramework\Validator\ValidatorInterface;
 use PHPUnit\Framework\TestCase;
 
 class NullValidatorTest extends TestCase
@@ -36,5 +38,24 @@ class NullValidatorTest extends TestCase
         $result = $validator->validate('foo');
 
         $this->assertFalse($result->isValid());
+    }
+
+    /**
+     * Factory.
+     *
+     * Test that factory returns a NullValidator.
+     *
+     * @covers \ExtendsFramework\Validator\Type\NullValidator::factory()
+     */
+    public function testFactory(): void
+    {
+        $serviceLocator = $this->createMock(ServiceLocatorInterface::class);
+
+        /**
+         * @var ServiceLocatorInterface $serviceLocator
+         */
+        $validator = NullValidator::factory(NullValidator::class, $serviceLocator);
+
+        $this->assertInstanceOf(ValidatorInterface::class, $validator);
     }
 }

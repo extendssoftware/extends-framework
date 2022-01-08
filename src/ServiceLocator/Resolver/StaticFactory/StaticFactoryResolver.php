@@ -23,7 +23,7 @@ class StaticFactoryResolver implements ResolverInterface
      */
     public static function factory(array $services): ResolverInterface
     {
-        $resolver = new static();
+        $resolver = new StaticFactoryResolver();
         foreach ($services as $key => $service) {
             $resolver->addStaticFactory($key, $service);
         }

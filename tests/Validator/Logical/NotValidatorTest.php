@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace ExtendsFramework\Validator\Logical;
 
+use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
+use ExtendsFramework\Validator\ValidatorInterface;
 use PHPUnit\Framework\TestCase;
 
 class NotValidatorTest extends TestCase
@@ -36,5 +38,45 @@ class NotValidatorTest extends TestCase
         $result = $validator->validate(1);
 
         $this->assertFalse($result->isValid());
+    }
+
+    /**
+     * Factory.
+     *
+     * Test that factory returns a NotValidator.
+     *
+     * @covers \ExtendsFramework\Validator\Logical\NotValidator::factory()
+     * @covers \ExtendsFramework\Validator\Logical\NotValidator::__construct()
+     * @covers \ExtendsFramework\Validator\Logical\NotValidator::addValidator()
+     */
+    public function testFactory(): void
+    {
+        $serviceLocator = $this->createMock(ServiceLocatorInterface::class);
+        $serviceLocator
+            ->expects($this->once())
+            ->method('getService')
+            ->with(
+                ValidatorInterface::class,
+                [
+                    'foo' => 'bar',
+                ]
+            )
+            ->willReturn($this->createMock(ValidatorInterface::class));
+
+        /**
+         * @var ServiceLocatorInterface $serviceLocator
+         */
+        $validator = NotValidator::factory(ValidatorInterface::class, $serviceLocator, [
+            'validators' => [
+                [
+                    'name' => ValidatorInterface::class,
+                    'options' => [
+                        'foo' => 'bar',
+                    ],
+                ],
+            ],
+        ]);
+
+        $this->assertInstanceOf(ValidatorInterface::class, $validator);
     }
 }

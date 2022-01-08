@@ -66,7 +66,7 @@ class FileWriter extends AbstractWriter
      */
     public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): object
     {
-        $writer = new static(
+        $writer = new FileWriter(
             $extra['location'],
             $extra['file_format'] ?? null,
             $extra['log_format'] ?? null,

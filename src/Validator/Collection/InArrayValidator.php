@@ -39,7 +39,7 @@ class InArrayValidator extends AbstractValidator
      */
     public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): object
     {
-        return new static(
+        return new InArrayValidator(
             $extra['values'] ?? []
         );
     }

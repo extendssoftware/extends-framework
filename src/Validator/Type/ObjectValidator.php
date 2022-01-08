@@ -3,10 +3,12 @@ declare(strict_types=1);
 
 namespace ExtendsFramework\Validator\Type;
 
+use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
+use ExtendsFramework\Validator\AbstractValidator;
 use ExtendsFramework\Validator\Exception\TemplateNotFound;
 use ExtendsFramework\Validator\Result\ResultInterface;
 
-class ObjectValidator extends AbstractTypeValidator
+class ObjectValidator extends AbstractValidator
 {
     /**
      * When value is not an object.
@@ -14,6 +16,14 @@ class ObjectValidator extends AbstractTypeValidator
      * @const string
      */
     public const NOT_OBJECT = 'notObject';
+
+    /**
+     * @inheritDoc
+     */
+    public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): object
+    {
+        return new ObjectValidator();
+    }
 
     /**
      * @inheritDoc

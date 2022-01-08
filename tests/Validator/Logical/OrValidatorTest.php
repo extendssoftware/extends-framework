@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace ExtendsFramework\Validator\Logical;
 
+use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
 use ExtendsFramework\Validator\Result\ResultInterface;
 use ExtendsFramework\Validator\ValidatorInterface;
 use PHPUnit\Framework\TestCase;
@@ -93,5 +94,45 @@ class OrValidatorTest extends TestCase
             ->validate('foo', ['bar' => 'baz']);
 
         $this->assertFalse($result->isValid());
+    }
+    
+    /**
+     * Factory.
+     *
+     * Test that factory returns a OrValidator.
+     *
+     * @covers \ExtendsFramework\Validator\Logical\OrValidator::factory()
+     * @covers \ExtendsFramework\Validator\Logical\OrValidator::__construct()
+     * @covers \ExtendsFramework\Validator\Logical\OrValidator::addValidator()
+     */
+    public function testFactory(): void
+    {
+        $serviceLocator = $this->createMock(ServiceLocatorInterface::class);
+        $serviceLocator
+            ->expects($this->once())
+            ->method('getService')
+            ->with(
+                ValidatorInterface::class,
+                [
+                    'foo' => 'bar',
+                ]
+            )
+            ->willReturn($this->createMock(ValidatorInterface::class));
+
+        /**
+         * @var ServiceLocatorInterface $serviceLocator
+         */
+        $validator = OrValidator::factory(ValidatorInterface::class, $serviceLocator, [
+            'validators' => [
+                [
+                    'name' => ValidatorInterface::class,
+                    'options' => [
+                        'foo' => 'bar',
+                    ],
+                ],
+            ],
+        ]);
+
+        $this->assertInstanceOf(ValidatorInterface::class, $validator);
     }
 }

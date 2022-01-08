@@ -43,7 +43,7 @@ class ContainsValidator extends AbstractValidator
         /**
          * @var ValidatorInterface $service
          */
-        return new static($service);
+        return new ContainsValidator($service);
     }
 
     /**

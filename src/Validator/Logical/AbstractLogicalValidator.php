@@ -30,20 +30,6 @@ abstract class AbstractLogicalValidator extends AbstractValidator
     }
 
     /**
-     * @inheritDoc
-     * @throws ServiceLocatorException
-     */
-    public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): object
-    {
-        $validators = [];
-        foreach ($extra['validators'] ?? [] as $validator) {
-            $validators[] = $serviceLocator->getService($validator['name'], $validator['options'] ?? []);
-        }
-
-        return new static($validators);
-    }
-
-    /**
      * Add validator.
      *
      * @param ValidatorInterface $validator

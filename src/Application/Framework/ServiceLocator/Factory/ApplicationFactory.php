@@ -21,22 +21,25 @@ class ApplicationFactory implements ServiceFactoryInterface
     public function createService(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): object
     {
         if ($extra['console'] ?? false) {
-            return $this->getConsoleApplication($serviceLocator);
+            return $this->getConsoleApplication($serviceLocator, $extra);
         }
 
-        return $this->getHttpApplication($serviceLocator);
+        return $this->getHttpApplication($serviceLocator, $extra);
     }
 
     /**
      * Get console application.
      *
      * @param ServiceLocatorInterface $serviceLocator
+     * @param array|null              $extra
      *
      * @return ConsoleApplication
      * @throws ServiceLocatorException
      */
-    private function getConsoleApplication(ServiceLocatorInterface $serviceLocator): ConsoleApplication
-    {
+    private function getConsoleApplication(
+        ServiceLocatorInterface $serviceLocator,
+        array $extra = null
+    ): ConsoleApplication {
         /** @noinspection PhpParamsInspection */
         return new ConsoleApplication(
             $serviceLocator->getService(ShellInterface::class),
@@ -49,11 +52,12 @@ class ApplicationFactory implements ServiceFactoryInterface
      * Get HTTP application.
      *
      * @param ServiceLocatorInterface $serviceLocator
+     * @param array|null              $extra
      *
      * @return HttpApplication
      * @throws ServiceLocatorException
      */
-    private function getHttpApplication(ServiceLocatorInterface $serviceLocator): HttpApplication
+    private function getHttpApplication(ServiceLocatorInterface $serviceLocator, array $extra = null): HttpApplication
     {
         /** @noinspection PhpParamsInspection */
         return new HttpApplication(

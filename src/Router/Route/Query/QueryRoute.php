@@ -57,7 +57,7 @@ class QueryRoute implements RouteInterface, StaticFactoryInterface
             $validators[$parameter] = $serviceLocator->getService($validator['name'], $validator['options'] ?? []);
         }
 
-        return new static($validators, $extra['parameters'] ?? []);
+        return new QueryRoute($validators, $extra['parameters'] ?? []);
     }
 
     /**

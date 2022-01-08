@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace ExtendsFramework\Validator\Type;
 
+use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
+use ExtendsFramework\Validator\ValidatorInterface;
 use PHPUnit\Framework\TestCase;
 
 class FloatValidatorTest extends TestCase
@@ -36,5 +38,24 @@ class FloatValidatorTest extends TestCase
         $result = $validator->validate(9);
 
         $this->assertFalse($result->isValid());
+    }
+
+    /**
+     * Factory.
+     *
+     * Test that factory returns a FloatValidator.
+     *
+     * @covers \ExtendsFramework\Validator\Type\FloatValidator::factory()
+     */
+    public function testFactory(): void
+    {
+        $serviceLocator = $this->createMock(ServiceLocatorInterface::class);
+
+        /**
+         * @var ServiceLocatorInterface $serviceLocator
+         */
+        $validator = FloatValidator::factory(FloatValidator::class, $serviceLocator);
+
+        $this->assertInstanceOf(ValidatorInterface::class, $validator);
     }
 }

@@ -81,7 +81,7 @@ class MethodRoute implements RouteInterface, StaticFactoryInterface
             $validators[] = $serviceLocator->getService($validator['name'], $validator['options'] ?? []);
         }
 
-        return new static($extra['method'], $extra['parameters'] ?? null, $validators);
+        return new MethodRoute($extra['method'], $extra['parameters'] ?? null, $validators);
     }
 
     /**

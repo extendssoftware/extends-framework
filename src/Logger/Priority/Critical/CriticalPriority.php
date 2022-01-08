@@ -3,9 +3,11 @@ declare(strict_types=1);
 
 namespace ExtendsFramework\Logger\Priority\Critical;
 
-use ExtendsFramework\Logger\Priority\AbstractPriority;
+use ExtendsFramework\Logger\Priority\PriorityInterface;
+use ExtendsFramework\ServiceLocator\Resolver\StaticFactory\StaticFactoryInterface;
+use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
 
-class CriticalPriority extends AbstractPriority
+class CriticalPriority implements PriorityInterface, StaticFactoryInterface
 {
     /**
      * @inheritDoc
@@ -29,5 +31,13 @@ class CriticalPriority extends AbstractPriority
     public function getDescription(): string
     {
         return 'Critical conditions, such as hard device errors.';
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): object
+    {
+        return new CriticalPriority();
     }
 }

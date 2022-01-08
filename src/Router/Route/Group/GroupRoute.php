@@ -46,7 +46,7 @@ class GroupRoute implements RouteInterface, StaticFactoryInterface
      */
     public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): object
     {
-        return new static($extra['route'], $extra['abstract'] ?? null);
+        return new GroupRoute($extra['route'], $extra['abstract'] ?? null);
     }
 
     /**

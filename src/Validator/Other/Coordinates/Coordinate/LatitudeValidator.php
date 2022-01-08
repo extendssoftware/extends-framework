@@ -37,7 +37,7 @@ class LatitudeValidator extends AbstractValidator
      */
     public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): object
     {
-        return new static();
+        return new LatitudeValidator();
     }
 
     /**

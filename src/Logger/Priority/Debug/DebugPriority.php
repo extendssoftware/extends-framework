@@ -3,9 +3,11 @@ declare(strict_types=1);
 
 namespace ExtendsFramework\Logger\Priority\Debug;
 
-use ExtendsFramework\Logger\Priority\AbstractPriority;
+use ExtendsFramework\Logger\Priority\PriorityInterface;
+use ExtendsFramework\ServiceLocator\Resolver\StaticFactory\StaticFactoryInterface;
+use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
 
-class DebugPriority extends AbstractPriority
+class DebugPriority implements PriorityInterface, StaticFactoryInterface
 {
     /**
      * @inheritDoc
@@ -29,5 +31,13 @@ class DebugPriority extends AbstractPriority
     public function getDescription(): string
     {
         return 'Debug-level messages.';
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): object
+    {
+        return new DebugPriority();
     }
 }

@@ -21,7 +21,7 @@ class ClosureResolver implements ResolverInterface
      */
     public static function factory(array $services): ResolverInterface
     {
-        $resolver = new static();
+        $resolver = new ClosureResolver();
         foreach ($services as $key => $closure) {
             $resolver->addClosure($key, $closure);
         }
