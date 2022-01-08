@@ -33,8 +33,7 @@ class HttpApplication extends AbstractApplication
         RequestInterface $request,
         ServiceLocatorInterface $serviceLocator,
         array $modules
-    )
-    {
+    ) {
         parent::__construct($serviceLocator, $modules);
 
         $this->chain = $chain;

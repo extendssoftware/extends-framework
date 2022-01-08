@@ -193,8 +193,7 @@ class Uri implements UriInterface
         string $user = null,
         string $pass = null,
         int $port = null
-    ): UriInterface
-    {
+    ): UriInterface {
         $uri = clone $this;
         $uri->host = $host;
         $uri->user = $user;

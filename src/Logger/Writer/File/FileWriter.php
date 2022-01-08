@@ -53,8 +53,7 @@ class FileWriter extends AbstractWriter
         string $fileFormat = null,
         string $logFormat = null,
         string $newLine = null
-    )
-    {
+    ) {
         $this->location = $location;
         $this->fileFormat = $fileFormat ?? 'Y-m-d';
         $this->logFormat = $logFormat ?? '{datetime} {keyword} ({value}): {message} {metaData}';

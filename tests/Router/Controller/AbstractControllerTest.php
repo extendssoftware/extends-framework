@@ -37,8 +37,7 @@ class AbstractControllerTest extends TestCase
                 int $someId,
                 ?bool $allowsNull,
                 string $defaultValue = 'string'
-            ): ResponseInterface
-            {
+            ): ResponseInterface {
                 return (new Response())->withBody([
                     'request' => $this->getRequest(),
                     'routeMatch' => $this->getRouteMatch(),

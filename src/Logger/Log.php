@@ -53,8 +53,7 @@ class Log implements LogInterface
         PriorityInterface $priority = null,
         DateTime $datetime = null,
         array $metaData = null
-    )
-    {
+    ) {
         $this->message = $message;
         $this->priority = $priority ?? new CriticalPriority();
         $this->datetime = $datetime ?? new DateTime();

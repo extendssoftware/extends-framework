@@ -145,8 +145,7 @@ class PropertiesValidator extends AbstractValidator
         string $property,
         ValidatorInterface $validator,
         bool $optional = null
-    ): PropertiesValidator
-    {
+    ): PropertiesValidator {
         $this->properties[$property] = new Property($property, $validator, $optional);
 
         return $this;

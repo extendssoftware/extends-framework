@@ -305,7 +305,6 @@ class ApplicationBuilder implements ApplicationBuilderInterface
                         $this->cacheFilename
                     )
                 );
-
             }
 
             $cached = $this->loader->load();

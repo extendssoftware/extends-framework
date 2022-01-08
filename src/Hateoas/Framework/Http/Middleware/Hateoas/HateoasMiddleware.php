@@ -61,8 +61,7 @@ class HateoasMiddleware implements MiddlewareInterface
         ExpanderInterface $expander,
         SerializerInterface $serializer,
         SecurityServiceInterface $securityService
-    )
-    {
+    ) {
         $this->authorizer = $authorizer;
         $this->expander = $expander;
         $this->serializer = $serializer;
