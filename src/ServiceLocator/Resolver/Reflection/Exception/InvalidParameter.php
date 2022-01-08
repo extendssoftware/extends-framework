@@ -19,7 +19,7 @@ class InvalidParameter extends Exception implements ReflectionResolverException
         parent::__construct(sprintf(
             'Reflection parameter "%s" must be a class, got type "%s".',
             $parameter->getName(),
-            $parameter->getType()
+            $parameter->getType()->getName()
         ));
     }
 }
