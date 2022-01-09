@@ -44,7 +44,7 @@ class ApplicationBuilder implements ApplicationBuilderInterface
     /**
      * Global config paths for glob.
      *
-     * @var array[]
+     * @var mixed[]
      */
     private array $globalConfigDirectories = [];
 

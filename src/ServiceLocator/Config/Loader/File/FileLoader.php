@@ -10,7 +10,7 @@ class FileLoader implements LoaderInterface
     /**
      * Directories.
      *
-     * @var array[]
+     * @var mixed[]
      */
     private array $directories = [];
 
