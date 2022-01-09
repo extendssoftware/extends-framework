@@ -76,7 +76,7 @@ class PathRoute implements RouteInterface, StaticFactoryInterface
             $validators[$parameter] = $serviceLocator->getService($validator['name'], $validator['options'] ?? []);
         }
 
-        return new static($extra['path'], $validators, $extra['parameters'] ?? []);
+        return new PathRoute($extra['path'], $validators, $extra['parameters'] ?? []);
     }
 
     /**

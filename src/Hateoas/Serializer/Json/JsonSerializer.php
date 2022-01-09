@@ -46,7 +46,7 @@ class JsonSerializer implements SerializerInterface
     /**
      * Serialize links.
      *
-     * @param LinkInterface[] $links
+     * @param LinkInterface[]|LinkInterface[][] $links
      *
      * @return array
      * @throws RouterException
@@ -73,7 +73,7 @@ class JsonSerializer implements SerializerInterface
     /**
      * Serialize embedded resources.
      *
-     * @param ResourceInterface[] $resources
+     * @param ResourceInterface[]|ResourceInterface[][] $resources
      *
      * @return array
      * @throws RouterException

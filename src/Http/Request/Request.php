@@ -248,7 +248,7 @@ class Request implements RequestInterface, StaticFactoryInterface
             }
         }
 
-        return (new static())
+        return (new Request())
             ->withMethod($environment['REQUEST_METHOD'])
             ->withBody($body ?? null)
             ->withHeaders($headers)

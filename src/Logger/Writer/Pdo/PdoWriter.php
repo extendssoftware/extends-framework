@@ -52,7 +52,7 @@ class PdoWriter extends AbstractWriter
         /**
          * @var PDO $pdo
          */
-        $writer = new static(
+        $writer = new PdoWriter(
             $pdo,
             $extra['table'] ?? null
         );

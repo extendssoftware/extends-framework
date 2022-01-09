@@ -35,8 +35,7 @@ class CollectionBuilder extends Builder
         int $page,
         int $total,
         array $keys = null
-    )
-    {
+    ) {
         $keys['limit'] = $keys['limit'] ?? 'limit';
         $keys['page'] = $keys['page'] ?? 'page';
         $keys['total'] = $keys['total'] ?? 'total';

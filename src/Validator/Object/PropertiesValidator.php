@@ -68,7 +68,7 @@ class PropertiesValidator extends AbstractValidator
      */
     public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): object
     {
-        $properties = new static(
+        $properties = new PropertiesValidator(
             null,
             $extra['strict'] ?? null
         );
@@ -145,8 +145,7 @@ class PropertiesValidator extends AbstractValidator
         string $property,
         ValidatorInterface $validator,
         bool $optional = null
-    ): PropertiesValidator
-    {
+    ): PropertiesValidator {
         $this->properties[$property] = new Property($property, $validator, $optional);
 
         return $this;

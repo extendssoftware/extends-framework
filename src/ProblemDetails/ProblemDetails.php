@@ -64,8 +64,7 @@ class ProblemDetails implements ProblemDetailsInterface
         int $status,
         string $instance = null,
         array $additional = null
-    )
-    {
+    ) {
         $this->type = $type;
         $this->title = $title;
         $this->detail = $detail;

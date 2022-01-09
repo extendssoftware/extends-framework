@@ -24,7 +24,7 @@ class ReflectionResolver implements ResolverInterface
      */
     public static function factory(array $services): ResolverInterface
     {
-        $resolver = new static();
+        $resolver = new ReflectionResolver();
         foreach ($services as $key => $class) {
             $resolver->addReflection($key, $class);
         }

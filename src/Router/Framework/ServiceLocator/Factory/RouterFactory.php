@@ -75,8 +75,7 @@ class RouterFactory implements ServiceFactoryInterface
         RouteInterface $route,
         array $children,
         bool $abstract = null
-    ): RouteInterface
-    {
+    ): RouteInterface {
         $group = $serviceLocator->getService(GroupRoute::class, [
             'route' => $route,
             'abstract' => $abstract,

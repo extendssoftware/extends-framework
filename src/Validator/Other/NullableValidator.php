@@ -36,8 +36,10 @@ class NullableValidator extends AbstractValidator
      */
     public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): object
     {
-        /** @noinspection PhpParamsInspection */
-        return new static($serviceLocator->getService($extra['name'], $extra['options'] ?? []));
+        /** @var ValidatorInterface $validator */
+        $validator = $serviceLocator->getService($extra['name'], $extra['options'] ?? []);
+
+        return new NullableValidator($validator);
     }
 
     /**

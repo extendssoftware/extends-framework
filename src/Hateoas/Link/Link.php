@@ -60,8 +60,7 @@ class Link implements LinkInterface
         RoleInterface $role = null,
         PermissionInterface $permission = null,
         PolicyInterface $policy = null
-    )
-    {
+    ) {
         $this->request = $request;
         $this->embeddable = $embeddable ?? false;
         $this->role = $role;

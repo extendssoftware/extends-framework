@@ -53,8 +53,7 @@ class PosixParser implements ParserInterface
         DefinitionInterface $definition,
         array $arguments,
         bool $strict
-    ): ParseResultInterface
-    {
+    ): ParseResultInterface {
         $operandPosition = 0;
         $terminated = false;
         $remaining = [];
@@ -193,8 +192,7 @@ class PosixParser implements ParserInterface
         string $name,
         bool $long,
         bool $strict
-    ): ?OptionInterface
-    {
+    ): ?OptionInterface {
         try {
             return $definition->getOption($name, $long);
         } catch (DefinitionException $exception) {

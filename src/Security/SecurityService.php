@@ -47,8 +47,7 @@ class SecurityService implements SecurityServiceInterface
         AuthenticatorInterface $authenticator,
         AuthorizerInterface $authorizer,
         StorageInterface $storage
-    )
-    {
+    ) {
         $this->authenticator = $authenticator;
         $this->authorizer = $authorizer;
         $this->storage = $storage;

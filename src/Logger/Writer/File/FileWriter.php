@@ -53,8 +53,7 @@ class FileWriter extends AbstractWriter
         string $fileFormat = null,
         string $logFormat = null,
         string $newLine = null
-    )
-    {
+    ) {
         $this->location = $location;
         $this->fileFormat = $fileFormat ?? 'Y-m-d';
         $this->logFormat = $logFormat ?? '{datetime} {keyword} ({value}): {message} {metaData}';
@@ -67,7 +66,7 @@ class FileWriter extends AbstractWriter
      */
     public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): object
     {
-        $writer = new static(
+        $writer = new FileWriter(
             $extra['location'],
             $extra['file_format'] ?? null,
             $extra['log_format'] ?? null,

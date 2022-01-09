@@ -72,8 +72,7 @@ class Shell implements ShellInterface
         SuggesterInterface $suggester,
         ParserInterface $parser,
         AboutInterface $about
-    )
-    {
+    ) {
         $this->descriptor = $descriptor;
         $this->suggester = $suggester;
         $this->parser = $parser;

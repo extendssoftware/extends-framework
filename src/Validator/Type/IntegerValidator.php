@@ -3,10 +3,12 @@ declare(strict_types=1);
 
 namespace ExtendsFramework\Validator\Type;
 
+use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
+use ExtendsFramework\Validator\AbstractValidator;
 use ExtendsFramework\Validator\Exception\TemplateNotFound;
 use ExtendsFramework\Validator\Result\ResultInterface;
 
-class IntegerValidator extends AbstractTypeValidator
+class IntegerValidator extends AbstractValidator
 {
     /**
      * When value is not an integer.
@@ -14,6 +16,14 @@ class IntegerValidator extends AbstractTypeValidator
      * @const string
      */
     public const NOT_INTEGER = 'notInteger';
+
+    /**
+     * @inheritDoc
+     */
+    public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): object
+    {
+        return new IntegerValidator();
+    }
 
     /**
      * @inheritDoc

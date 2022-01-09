@@ -14,7 +14,7 @@ class FactoryResolver implements ResolverInterface
     /**
      * An associative array which holds the factories.
      *
-     * @var ServiceFactoryInterface[]
+     * @var string[]|ServiceFactoryInterface[]
      */
     private array $factories = [];
 
@@ -23,7 +23,7 @@ class FactoryResolver implements ResolverInterface
      */
     public static function factory(array $services): ResolverInterface
     {
-        $resolver = new static();
+        $resolver = new FactoryResolver();
         foreach ($services as $key => $factory) {
             $resolver->addFactory($key, $factory);
         }

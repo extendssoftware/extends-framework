@@ -17,7 +17,8 @@ class ParameterNotFound extends InvalidArgumentException implements ControllerEx
     {
         parent::__construct(
             sprintf(
-                'Parameter name "%s" can not be found in route match parameters and has no default value or allows null.',
+                'Parameter name "%s" can not be found in route match parameters and has no default value or ' .
+                'allows null.',
                 $name
             )
         );

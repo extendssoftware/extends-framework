@@ -112,8 +112,7 @@ class ShellBuilder implements ShellBuilderInterface
         array $operands = null,
         array $options = null,
         array $parameters = null
-    ): ShellBuilder
-    {
+    ): ShellBuilder {
         $definition = new Definition();
         foreach ($operands ?: [] as $operand) {
             $definition->addOperand(

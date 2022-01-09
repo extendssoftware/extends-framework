@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace ExtendsFramework\Validator\Type;
 
+use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
+use ExtendsFramework\Validator\ValidatorInterface;
 use PHPUnit\Framework\TestCase;
 
 class IntegerValidatorTest extends TestCase
@@ -36,5 +38,24 @@ class IntegerValidatorTest extends TestCase
         $result = $validator->validate('foo');
 
         $this->assertFalse($result->isValid());
+    }
+
+    /**
+     * Factory.
+     *
+     * Test that factory returns a IntegerValidator.
+     *
+     * @covers \ExtendsFramework\Validator\Type\IntegerValidator::factory()
+     */
+    public function testFactory(): void
+    {
+        $serviceLocator = $this->createMock(ServiceLocatorInterface::class);
+
+        /**
+         * @var ServiceLocatorInterface $serviceLocator
+         */
+        $validator = IntegerValidator::factory(IntegerValidator::class, $serviceLocator);
+
+        $this->assertInstanceOf(ValidatorInterface::class, $validator);
     }
 }

@@ -3,10 +3,26 @@ declare(strict_types=1);
 
 namespace ExtendsFramework\Validator\Logical;
 
+use ExtendsFramework\ServiceLocator\ServiceLocatorException;
+use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
 use ExtendsFramework\Validator\Result\ResultInterface;
 
 class AndValidator extends AbstractLogicalValidator
 {
+    /**
+     * @inheritDoc
+     * @throws ServiceLocatorException
+     */
+    public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): object
+    {
+        $validators = [];
+        foreach ($extra['validators'] ?? [] as $validator) {
+            $validators[] = $serviceLocator->getService($validator['name'], $validator['options'] ?? []);
+        }
+
+        return new AndValidator($validators);
+    }
+
     /**
      * @inheritDoc
      */

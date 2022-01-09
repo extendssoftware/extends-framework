@@ -50,8 +50,7 @@ class Attribute implements AttributeInterface
         RoleInterface $role = null,
         PermissionInterface $permission = null,
         PolicyInterface $policy = null
-    )
-    {
+    ) {
         $this->value = $value;
         $this->role = $role;
         $this->permission = $permission;

@@ -68,8 +68,7 @@ class Option implements OptionInterface
         string $long = null,
         bool $isFlag = null,
         bool $isMultiple = null
-    )
-    {
+    ) {
         if ($short === null && $long === null) {
             throw new NoShortAndLongName($name);
         }

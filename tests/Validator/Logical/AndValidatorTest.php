@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace ExtendsFramework\Validator\Logical;
 
+use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
 use ExtendsFramework\Validator\Result\ResultInterface;
 use ExtendsFramework\Validator\ValidatorInterface;
 use PHPUnit\Framework\TestCase;
@@ -83,5 +84,45 @@ class AndValidatorTest extends TestCase
                 ->addValidator($inner)
                 ->validate('foo', ['bar' => 'baz'])
         );
+    }
+
+    /**
+     * Factory.
+     *
+     * Test that factory returns a AndValidator.
+     *
+     * @covers \ExtendsFramework\Validator\Logical\AndValidator::factory()
+     * @covers \ExtendsFramework\Validator\Logical\AndValidator::__construct()
+     * @covers \ExtendsFramework\Validator\Logical\AndValidator::addValidator()
+     */
+    public function testFactory(): void
+    {
+        $serviceLocator = $this->createMock(ServiceLocatorInterface::class);
+        $serviceLocator
+            ->expects($this->once())
+            ->method('getService')
+            ->with(
+                ValidatorInterface::class,
+                [
+                    'foo' => 'bar',
+                ]
+            )
+            ->willReturn($this->createMock(ValidatorInterface::class));
+
+        /**
+         * @var ServiceLocatorInterface $serviceLocator
+         */
+        $validator = AndValidator::factory(ValidatorInterface::class, $serviceLocator, [
+            'validators' => [
+                [
+                    'name' => ValidatorInterface::class,
+                    'options' => [
+                        'foo' => 'bar',
+                    ],
+                ],
+            ],
+        ]);
+
+        $this->assertInstanceOf(ValidatorInterface::class, $validator);
     }
 }

@@ -43,7 +43,7 @@ class HostRoute implements RouteInterface, StaticFactoryInterface
      */
     public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): object
     {
-        return new static($extra['host'], $extra['parameters'] ?? []);
+        return new HostRoute($extra['host'], $extra['parameters'] ?? []);
     }
 
     /**

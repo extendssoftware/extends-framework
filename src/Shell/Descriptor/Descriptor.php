@@ -41,8 +41,7 @@ class Descriptor implements DescriptorInterface
         DefinitionInterface $definition,
         array $commands,
         bool $short = null
-    ): DescriptorInterface
-    {
+    ): DescriptorInterface {
         if ($short) {
             $this->output
                 ->newLine()

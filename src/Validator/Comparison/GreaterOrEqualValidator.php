@@ -3,10 +3,12 @@ declare(strict_types=1);
 
 namespace ExtendsFramework\Validator\Comparison;
 
+use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
+use ExtendsFramework\Validator\AbstractValidator;
 use ExtendsFramework\Validator\Exception\TemplateNotFound;
 use ExtendsFramework\Validator\Result\ResultInterface;
 
-class GreaterOrEqualValidator extends AbstractComparisonValidator
+class GreaterOrEqualValidator extends AbstractValidator
 {
     /**
      * When value is not greater than or equal to context.
@@ -16,19 +18,45 @@ class GreaterOrEqualValidator extends AbstractComparisonValidator
     public const NOT_GREATER_OR_EQUAL = 'notGreaterOrEqual';
 
     /**
+     * Value to compare to.
+     *
+     * @var mixed
+     */
+    private $subject;
+
+    /**
+     * AbstractComparisonValidator constructor.
+     *
+     * @param mixed $subject
+     */
+    public function __construct($subject)
+    {
+        $this->subject = $subject;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): object
+    {
+        return new GreaterOrEqualValidator(
+            $extra['subject']
+        );
+    }
+
+    /**
      * @inheritDoc
      * @throws TemplateNotFound
      */
     public function validate($value, $context = null): ResultInterface
     {
-        $subject = $this->getSubject();
-        if ($value >= $subject) {
+        if ($value >= $this->subject) {
             return $this->getValidResult();
         }
 
         return $this->getInvalidResult(self::NOT_GREATER_OR_EQUAL, [
             'value' => $value,
-            'subject' => $subject,
+            'subject' => $this->subject,
         ]);
     }
 

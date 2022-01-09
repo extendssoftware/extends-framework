@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace ExtendsFramework\Validator\Type;
 
+use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
+use ExtendsFramework\Validator\ValidatorInterface;
 use PHPUnit\Framework\TestCase;
 
 class StringValidatorTest extends TestCase
@@ -36,5 +38,24 @@ class StringValidatorTest extends TestCase
         $result = $validator->validate(9);
 
         $this->assertFalse($result->isValid());
+    }
+
+    /**
+     * Factory.
+     *
+     * Test that factory returns a StringValidator.
+     *
+     * @covers \ExtendsFramework\Validator\Type\StringValidator::factory()
+     */
+    public function testFactory(): void
+    {
+        $serviceLocator = $this->createMock(ServiceLocatorInterface::class);
+
+        /**
+         * @var ServiceLocatorInterface $serviceLocator
+         */
+        $validator = StringValidator::factory(StringValidator::class, $serviceLocator);
+
+        $this->assertInstanceOf(ValidatorInterface::class, $validator);
     }
 }

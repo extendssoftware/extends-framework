@@ -48,8 +48,7 @@ class Command implements CommandInterface
         string $description,
         DefinitionInterface $definition,
         array $parameters = null
-    )
-    {
+    ) {
         $this->name = $name;
         $this->description = $description;
         $this->definition = $definition;

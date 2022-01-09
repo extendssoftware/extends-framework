@@ -3,9 +3,11 @@ declare(strict_types=1);
 
 namespace ExtendsFramework\Logger\Priority\Emergency;
 
-use ExtendsFramework\Logger\Priority\AbstractPriority;
+use ExtendsFramework\Logger\Priority\PriorityInterface;
+use ExtendsFramework\ServiceLocator\Resolver\StaticFactory\StaticFactoryInterface;
+use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
 
-class EmergencyPriority extends AbstractPriority
+class EmergencyPriority implements PriorityInterface, StaticFactoryInterface
 {
     /**
      * @inheritDoc
@@ -29,5 +31,13 @@ class EmergencyPriority extends AbstractPriority
     public function getDescription(): string
     {
         return 'System is unusable.';
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): object
+    {
+        return new EmergencyPriority();
     }
 }

@@ -44,7 +44,7 @@ class ApplicationBuilder implements ApplicationBuilderInterface
     /**
      * Global config paths for glob.
      *
-     * @var string[]
+     * @var array[]
      */
     private array $globalConfigDirectories = [];
 
@@ -107,7 +107,7 @@ class ApplicationBuilder implements ApplicationBuilderInterface
     /**
      * Framework configs.
      *
-     * @var LoaderInterface[]
+     * @var string[]
      */
     private array $frameworkConfigs = [
         ApplicationConfigLoader::class,
@@ -305,7 +305,6 @@ class ApplicationBuilder implements ApplicationBuilderInterface
                         $this->cacheFilename
                     )
                 );
-
             }
 
             $cached = $this->loader->load();

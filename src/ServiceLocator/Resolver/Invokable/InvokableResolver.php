@@ -21,7 +21,7 @@ class InvokableResolver implements ResolverInterface
      */
     public static function factory(array $services): ResolverInterface
     {
-        $resolver = new static();
+        $resolver = new InvokableResolver();
         foreach ($services as $key => $invokable) {
             $resolver->addInvokable($key, $invokable);
         }

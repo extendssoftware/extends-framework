@@ -230,8 +230,7 @@ class Builder implements BuilderInterface
         RoleInterface $role = null,
         PermissionInterface $permission = null,
         PolicyInterface $policy = null
-    ): bool
-    {
+    ): bool {
         $authorized = true;
         if ($role || $permission || $policy) {
             $authorized = false;

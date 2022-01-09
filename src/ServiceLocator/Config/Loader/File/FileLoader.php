@@ -8,9 +8,9 @@ use ExtendsFramework\ServiceLocator\Config\Loader\LoaderInterface;
 class FileLoader implements LoaderInterface
 {
     /**
-     * Directories ...
+     * Directories.
      *
-     * @var string[]
+     * @var array[]
      */
     private array $directories = [];
 
