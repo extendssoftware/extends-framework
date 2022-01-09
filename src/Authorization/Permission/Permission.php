@@ -98,10 +98,14 @@ class Permission implements PermissionInterface
     private function getSections(): array
     {
         $sections = explode($this->divider, $this->notation);
-        foreach ($sections as $index => $section) {
-            $sections[$index] = explode($this->separator, $section);
+        if (is_array($sections)) {
+            foreach ($sections as $index => $section) {
+                if (is_string($section)) {
+                    $sections[$index] = explode($this->separator, $section);
+                }
+            }
         }
 
-        return $sections;
+        return $sections ?: [];
     }
 }
