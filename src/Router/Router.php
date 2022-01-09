@@ -18,7 +18,7 @@ class Router implements RouterInterface
      *
      * @var string
      */
-    private string $pattern = '/^([a-z0-9\-\_]+)((?:\/([a-z0-9\-\_]+))*)$/i';
+    private string $pattern = '/^([a-z0-9\-_]+)((?:\/([a-z0-9\-_]+))*)$/i';
 
     /**
      * @inheritDoc
