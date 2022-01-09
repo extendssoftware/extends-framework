@@ -43,6 +43,7 @@ class HostRoute implements RouteInterface, StaticFactoryInterface
      */
     public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): object
     {
+        /** @phpstan-ignore-next-line */
         return new HostRoute($extra['host'], $extra['parameters'] ?? []);
     }
 

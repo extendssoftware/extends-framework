@@ -81,6 +81,7 @@ class MethodRoute implements RouteInterface, StaticFactoryInterface
             $validators[] = $serviceLocator->getService($validator['name'], $validator['options'] ?? []);
         }
 
+        /** @phpstan-ignore-next-line */
         return new MethodRoute($extra['method'], $extra['parameters'] ?? null, $validators);
     }
 

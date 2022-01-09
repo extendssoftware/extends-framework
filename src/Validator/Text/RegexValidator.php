@@ -41,6 +41,7 @@ class RegexValidator extends AbstractValidator
     public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): object
     {
         return new RegexValidator(
+            /** @phpstan-ignore-next-line */
             $extra['pattern']
         );
     }

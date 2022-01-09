@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace ExtendsFramework\Router\Route\Group;
 
+use _PHPStan_76800bfb5\Nette\Neon\Exception;
 use ExtendsFramework\Http\Request\RequestInterface;
 use ExtendsFramework\Router\Route\Group\Exception\AssembleAbstractGroupRoute;
 use ExtendsFramework\Router\Route\RouteInterface;
@@ -46,6 +47,7 @@ class GroupRoute implements RouteInterface, StaticFactoryInterface
      */
     public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): object
     {
+        /** @phpstan-ignore-next-line */
         return new GroupRoute($extra['route'], $extra['abstract'] ?? null);
     }
 

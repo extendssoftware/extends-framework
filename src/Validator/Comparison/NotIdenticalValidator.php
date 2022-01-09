@@ -40,6 +40,7 @@ class NotIdenticalValidator extends AbstractValidator
     public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): object
     {
         return new NotIdenticalValidator(
+            /** @phpstan-ignore-next-line */
             $extra['subject']
         );
     }

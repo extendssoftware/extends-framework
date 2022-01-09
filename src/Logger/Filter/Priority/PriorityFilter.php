@@ -40,7 +40,7 @@ class PriorityFilter implements FilterInterface, StaticFactoryInterface
      */
     public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): object
     {
-        if (array_key_exists('priority', $extra)) {
+        if (isset($extra['priority'])) {
             /** @var PriorityInterface $priority */
             $priority = $serviceLocator->getService(
                 $extra['priority']['name'],
@@ -48,7 +48,7 @@ class PriorityFilter implements FilterInterface, StaticFactoryInterface
             );
         }
 
-        if (array_key_exists('validator', $extra)) {
+        if (isset($extra['validator'])) {
             /** @var ValidatorInterface $validator */
             $validator = $serviceLocator->getService(
                 $extra['validator']['name'],

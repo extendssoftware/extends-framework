@@ -40,6 +40,7 @@ class IdenticalValidator extends AbstractValidator
     public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): object
     {
         return new IdenticalValidator(
+            /** @phpstan-ignore-next-line */
             $extra['subject']
         );
     }

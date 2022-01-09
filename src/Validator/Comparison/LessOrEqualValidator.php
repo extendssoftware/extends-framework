@@ -40,6 +40,7 @@ class LessOrEqualValidator extends AbstractValidator
     public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): object
     {
         return new LessOrEqualValidator(
+            /** @phpstan-ignore-next-line */
             $extra['subject']
         );
     }
