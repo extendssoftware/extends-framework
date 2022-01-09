@@ -30,7 +30,7 @@ class PosixInput implements InputInterface
     public function line(int $length = null): ?string
     {
         if (is_resource($this->stream)) {
-            $line = fgets($this->stream, $length ?? 4096);
+            $line = fgets($this->stream, max(1, $length ?? 4096));
             if (is_string($line)) {
                 return rtrim($line, "\n\r") ?: null;
             }
