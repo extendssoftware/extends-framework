@@ -10,7 +10,7 @@ class PosixInput implements InputInterface
     /**
      * Resource to read from.
      *
-     * @var resource
+     * @var resource|false
      */
     private $stream;
 
@@ -29,9 +29,14 @@ class PosixInput implements InputInterface
      */
     public function line(int $length = null): ?string
     {
-        $line = fgets($this->stream, $length ?? 4096);
+        if (is_resource($this->stream)) {
+            $line = fgets($this->stream, $length ?? 4096);
+            if (is_string($line)) {
+                return rtrim($line, "\n\r") ?: null;
+            }
+        }
 
-        return rtrim($line, "\n\r") ?: null;
+        return null;
     }
 
     /**
@@ -39,11 +44,17 @@ class PosixInput implements InputInterface
      */
     public function character(string $allowed = null): ?string
     {
-        $character = fgetc($this->stream);
-        if (is_string($allowed) && strpos($allowed, $character) === false) {
-            $character = '';
+        if (is_resource($this->stream)) {
+            $character = fgetc($this->stream);
+            if (is_string($character)) {
+                if (is_string($allowed) && strpos($allowed, $character) === false) {
+                    $character = '';
+                }
+
+                return rtrim($character, "\n\r") ?: null;
+            }
         }
 
-        return rtrim($character, "\n\r") ?: null;
+        return null;
     }
 }

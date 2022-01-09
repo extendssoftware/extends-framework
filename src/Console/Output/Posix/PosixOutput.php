@@ -26,7 +26,7 @@ class PosixOutput implements OutputInterface
     /**
      * Resource to write to.
      *
-     * @var resource
+     * @var resource|false
      */
     private $stream;
 
@@ -54,7 +54,9 @@ class PosixOutput implements OutputInterface
                 $text = $formatter->create($text);
             }
 
-            fwrite($this->stream, $text);
+            if (is_resource($this->stream)) {
+                fwrite($this->stream, $text);
+            }
         }
 
         return $this;

@@ -74,15 +74,14 @@ class PropertiesValidator extends AbstractValidator
         );
 
         foreach ($extra['properties'] ?? [] as $property) {
-            /** @noinspection PhpParamsInspection */
-            $properties->addProperty(
-                $property['property'],
-                $serviceLocator->getService(
-                    $property['validator']['name'],
-                    $property['validator']['options'] ?? []
-                ),
-                $property['optional'] ?? null
+            $validator = $serviceLocator->getService(
+                $property['validator']['name'],
+                $property['validator']['options'] ?? []
             );
+
+            if ($validator instanceof ValidatorInterface) {
+                $properties->addProperty($property['property'], $validator, $property['optional'] ?? null);
+            }
         }
 
         return $properties;

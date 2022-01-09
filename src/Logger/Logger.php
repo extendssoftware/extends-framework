@@ -20,7 +20,7 @@ class Logger implements LoggerInterface
     /**
      * Resource to write to when a logger fails.
      *
-     * @var resource
+     * @var resource|false
      */
     private $stream;
 
@@ -50,7 +50,9 @@ class Logger implements LoggerInterface
                     break;
                 }
             } catch (WriterException $exception) {
-                fwrite($this->stream, $exception->getMessage());
+                if (is_resource($this->stream)) {
+                    fwrite($this->stream, $exception->getMessage());
+                }
             }
         }
 

@@ -15,11 +15,14 @@ class ServiceLocatorFactory implements ServiceLocatorFactoryInterface
     {
         $serviceLocator = new ServiceLocator($config);
         foreach ($config[ServiceLocatorInterface::class] ?? [] as $fqcn => $services) {
-            if (!is_subclass_of($fqcn, ResolverInterface::class, true)) {
+            if (!is_string($fqcn) || !is_subclass_of($fqcn, ResolverInterface::class, true)) {
                 throw new UnknownResolverType($fqcn);
             }
 
-            $serviceLocator->addResolver($fqcn::factory($services), $fqcn);
+            $resolver = $fqcn::factory($services);
+            if ($resolver instanceof ResolverInterface) {
+                $serviceLocator->addResolver($resolver, $fqcn);
+            }
         }
 
         return $serviceLocator;

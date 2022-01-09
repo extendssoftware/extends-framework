@@ -65,14 +65,14 @@ class Builder implements BuilderInterface
     /**
      * Embeddable link rels to expand in resource.
      *
-     * @var string[]
+     * @var mixed[]
      */
     private array $toExpand = [];
 
     /**
      * Attributes properties to project in resource.
      *
-     * @var string[]
+     * @var mixed[]
      */
     private array $toProject = [];
 
@@ -199,7 +199,7 @@ class Builder implements BuilderInterface
      *
      * @param LinkInterface[]|LinkInterface[][] $links
      *
-     * @return LinkInterface[]|LinkInterface[][]
+     * @return mixed[]
      */
     private function getAuthorizedLinks(array $links): array
     {
@@ -276,7 +276,7 @@ class Builder implements BuilderInterface
      *
      * @param AttributeInterface[] $attributes
      *
-     * @return AttributeInterface[]
+     * @return mixed[]
      */
     private function getAuthorizedAttributes(array $attributes): array
     {

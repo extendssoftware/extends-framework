@@ -5,6 +5,7 @@ namespace ExtendsFramework\Authorization\Framework\ServiceLocator\Factory;
 
 use ExtendsFramework\Authorization\Authorizer;
 use ExtendsFramework\Authorization\AuthorizerInterface;
+use ExtendsFramework\Authorization\Realm\RealmInterface;
 use ExtendsFramework\ServiceLocator\Resolver\Factory\ServiceFactoryInterface;
 use ExtendsFramework\ServiceLocator\ServiceLocatorException;
 use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
@@ -22,8 +23,10 @@ class AuthorizerFactory implements ServiceFactoryInterface
 
         $authenticator = new Authorizer();
         foreach ($config['realms'] ?? [] as $config) {
-            /** @noinspection PhpParamsInspection */
-            $authenticator->addRealm($serviceLocator->getService($config['name'], $config['options'] ?? []));
+            $realm = $serviceLocator->getService($config['name'], $config['options'] ?? []);
+            if ($realm instanceof RealmInterface) {
+                $authenticator->addRealm($realm);
+            }
         }
 
         return $authenticator;

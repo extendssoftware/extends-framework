@@ -22,9 +22,11 @@ class FileLoader implements LoaderInterface
         $loaded = [];
         foreach ($this->directories as [$directory, $regex]) {
             $filenames = scandir($directory);
-            foreach ($filenames as $filename) {
-                if (!in_array($filename, ['.', '..']) && preg_match($regex, $filename)) {
-                    $loaded[] = require $directory . '/' . $filename;
+            if (is_array($filenames)) {
+                foreach ($filenames as $filename) {
+                    if (!in_array($filename, ['.', '..']) && preg_match($regex, $filename)) {
+                        $loaded[] = require $directory . '/' . $filename;
+                    }
                 }
             }
         }

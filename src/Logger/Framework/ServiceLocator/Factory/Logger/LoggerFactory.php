@@ -5,6 +5,7 @@ namespace ExtendsFramework\Logger\Framework\ServiceLocator\Factory\Logger;
 
 use ExtendsFramework\Logger\Logger;
 use ExtendsFramework\Logger\LoggerInterface;
+use ExtendsFramework\Logger\Writer\WriterInterface;
 use ExtendsFramework\ServiceLocator\Resolver\Factory\ServiceFactoryInterface;
 use ExtendsFramework\ServiceLocator\ServiceLocatorException;
 use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
@@ -21,11 +22,11 @@ class LoggerFactory implements ServiceFactoryInterface
         $config = $config[LoggerInterface::class];
 
         $logger = new Logger();
-        foreach ($config['writers'] ?? [] as $writer) {
-            /** @noinspection PhpParamsInspection */
-            $logger->addWriter(
-                $serviceLocator->getService($writer['name'], $writer['options'] ?? [])
-            );
+        foreach ($config['writers'] ?? [] as $config) {
+            $writer = $serviceLocator->getService($config['name'], $config['options'] ?? []);
+            if ($writer instanceof WriterInterface) {
+                $logger->addWriter($writer);
+            }
         }
 
         return $logger;

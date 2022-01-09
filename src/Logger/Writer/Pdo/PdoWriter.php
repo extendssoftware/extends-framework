@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace ExtendsFramework\Logger\Writer\Pdo;
 
+use ExtendsFramework\Logger\Decorator\DecoratorInterface;
+use ExtendsFramework\Logger\Filter\FilterInterface;
 use ExtendsFramework\Logger\LogInterface;
 use ExtendsFramework\Logger\Writer\AbstractWriter;
 use ExtendsFramework\Logger\Writer\Pdo\Exception\StatementFailedWithError;
@@ -57,14 +59,19 @@ class PdoWriter extends AbstractWriter
             $extra['table'] ?? null
         );
 
-        foreach ($extra['filters'] ?? [] as $filter) {
-            /** @noinspection PhpParamsInspection */
-            $writer->addFilter($serviceLocator->getService($filter['name'], $filter['options'] ?? []));
+        foreach ($extra['filters'] ?? [] as $config) {
+            $filter = $serviceLocator->getService($config['name'], $config['options'] ?? []);
+
+            if ($filter instanceof FilterInterface) {
+                $writer->addFilter($filter);
+            }
         }
 
-        foreach ($extra['decorators'] ?? [] as $decorator) {
-            /** @noinspection PhpParamsInspection */
-            $writer->addDecorator($serviceLocator->getService($decorator['name'], $decorator['options'] ?? []));
+        foreach ($extra['decorators'] ?? [] as $config) {
+            $decorator = $serviceLocator->getService($config['name'], $config['options'] ?? []);
+            if ($decorator instanceof DecoratorInterface) {
+                $writer->addDecorator($decorator);
+            }
         }
 
         return $writer;

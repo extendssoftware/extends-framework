@@ -346,7 +346,7 @@ class Uri implements UriInterface
             ->withScheme((isset($environment['HTTPS']) && $environment['HTTPS'] !== 'off') ? 'https' : 'http')
             ->withHost($environment['HTTP_HOST'])
             ->withPort((int)$environment['SERVER_PORT'])
-            ->withPath(strtok($environment['REQUEST_URI'], '?'))
+            ->withPath(strtok($environment['REQUEST_URI'], '?') ?: '')
             ->withQuery($query);
 
         if (array_key_exists('PHP_AUTH_USER', $environment)) {

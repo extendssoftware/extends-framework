@@ -27,6 +27,6 @@ class JsonSerializer implements SerializerInterface
                 )
             ),
             JSON_UNESCAPED_SLASHES
-        );
+        ) ?: '';
     }
 }

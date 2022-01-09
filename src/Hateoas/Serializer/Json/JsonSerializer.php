@@ -19,7 +19,7 @@ class JsonSerializer implements SerializerInterface
     {
         return json_encode(
             $this->toArray($resource)
-        );
+        ) ?: '';
     }
 
     /**

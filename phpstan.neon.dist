@@ -1,2 +1,4 @@
 parameters:
-    level: 6
+    level: 7
+    excludePaths:
+        - /home/vincent/Development/extendssoftware/extends-framework/src/Hateoas/Builder/Builder.php
