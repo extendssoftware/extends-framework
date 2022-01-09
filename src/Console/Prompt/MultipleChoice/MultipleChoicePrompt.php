@@ -21,7 +21,7 @@ class MultipleChoicePrompt implements PromptInterface
     /**
      * Valid options to answer for question.
      *
-     * @var array
+     * @var mixed[]
      */
     private array $options;
 
@@ -36,7 +36,7 @@ class MultipleChoicePrompt implements PromptInterface
      * Create new multiple choice prompt.
      *
      * @param string    $question
-     * @param array     $options
+     * @param mixed[]   $options
      * @param bool|null $required
      */
     public function __construct(string $question, array $options, bool $required = null)

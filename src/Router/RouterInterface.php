@@ -23,8 +23,8 @@ interface RouterInterface
     /**
      * Assemble route path into a request.
      *
-     * @param string     $path       Consecutive route names separated with a forward slash.
-     * @param array|null $parameters Parameters to use when assembling routes.
+     * @param string       $path       Consecutive route names separated with a forward slash.
+     * @param mixed[]|null $parameters Parameters to use when assembling routes.
      *
      * @return RequestInterface
      * @throws RouterException       When $path can not be found.

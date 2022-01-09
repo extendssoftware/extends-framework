@@ -50,7 +50,7 @@ class AnsiFormatter implements FormatterInterface
     /**
      * Text format.
      *
-     * @var array
+     * @var mixed[]
      */
     private array $format = [];
 

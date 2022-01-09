@@ -40,7 +40,7 @@ class PosixParser implements ParserInterface
      * Parse arguments against definition in strict mode.
      *
      * @param DefinitionInterface $definition
-     * @param array               $arguments
+     * @param mixed[]             $arguments
      * @param bool                $strict
      *
      * @return ParseResultInterface

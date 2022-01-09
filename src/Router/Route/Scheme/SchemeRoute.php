@@ -15,7 +15,7 @@ class SchemeRoute implements RouteInterface, StaticFactoryInterface
     /**
      * Parameters to return when route is matched.
      *
-     * @var array
+     * @var mixed[]
      */
     private array $parameters;
 
@@ -29,8 +29,8 @@ class SchemeRoute implements RouteInterface, StaticFactoryInterface
     /**
      * Create a new scheme route.
      *
-     * @param string     $scheme
-     * @param array|null $parameters
+     * @param string       $scheme
+     * @param mixed[]|null $parameters
      */
     public function __construct(string $scheme, array $parameters = null)
     {

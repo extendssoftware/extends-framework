@@ -20,14 +20,14 @@ class InArrayValidator extends AbstractValidator
     /**
      * Valid values.
      *
-     * @var array
+     * @var mixed[]
      */
     private array $values;
 
     /**
      * InArrayValidator constructor.
      *
-     * @param array $values
+     * @param mixed[] $values
      */
     public function __construct(array $values)
     {

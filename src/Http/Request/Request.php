@@ -14,7 +14,7 @@ class Request implements RequestInterface, StaticFactoryInterface
     /**
      * Custom request attributes.
      *
-     * @var array
+     * @var mixed[]
      */
     private array $attributes = [];
 
@@ -28,7 +28,7 @@ class Request implements RequestInterface, StaticFactoryInterface
     /**
      * Request headers.
      *
-     * @var array
+     * @var mixed[]
      */
     private array $headers = [];
 
@@ -219,7 +219,7 @@ class Request implements RequestInterface, StaticFactoryInterface
     /**
      * Construct from environment variables.
      *
-     * @param array    $environment
+     * @param mixed[]  $environment
      * @param resource $stream
      *
      * @return RequestInterface

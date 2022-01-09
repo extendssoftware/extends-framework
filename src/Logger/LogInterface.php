@@ -32,7 +32,7 @@ interface LogInterface
     /**
      * Get extra meta data.
      *
-     * @return array
+     * @return mixed[]
      */
     public function getMetaData(): array;
 
@@ -48,7 +48,7 @@ interface LogInterface
     /**
      * Return new log with metaData.
      *
-     * @param array $metaData
+     * @param mixed[] $metaData
      *
      * @return LogInterface
      */

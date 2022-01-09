@@ -14,14 +14,14 @@ class MiddlewareChain implements MiddlewareChainInterface
     /**
      * Middleware queue.
      *
-     * @var SplPriorityQueue
+     * @var SplPriorityQueue<int, MiddlewareInterface>
      */
     private SplPriorityQueue $queue;
 
     /**
      * Set priority queue.
      *
-     * @param SplPriorityQueue|null $queue
+     * @param SplPriorityQueue<int, MiddlewareInterface>|null $queue
      */
     public function __construct(SplPriorityQueue $queue = null)
     {

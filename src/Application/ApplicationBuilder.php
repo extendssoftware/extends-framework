@@ -84,18 +84,18 @@ class ApplicationBuilder implements ApplicationBuilderInterface
     private array $configs = [];
 
     /**
+     * Config merger.
+     *
+     * @var MergerInterface
+     */
+    private MergerInterface $merger;
+
+    /**
      * Config loader.
      *
      * @var LoaderInterface|null
      */
     private ?LoaderInterface $loader;
-
-    /**
-     * Config merger.
-     *
-     * @var MergerInterface|null
-     */
-    private ?MergerInterface $merger;
 
     /**
      * Service locator factory.
@@ -285,7 +285,7 @@ class ApplicationBuilder implements ApplicationBuilderInterface
     /**
      * Get merged global and module config.
      *
-     * @return array
+     * @return mixed[]
      * @throws LoaderException
      * @throws MergerException
      * @throws ApplicationBuilderException
@@ -375,8 +375,8 @@ class ApplicationBuilder implements ApplicationBuilderInterface
         $this->cacheEnabled = false;
         $this->modules = [];
         $this->configs = [];
-        $this->loader = null;
         $this->merger = new RecursiveMerger();
+        $this->loader = null;
         $this->factory = null;
     }
 }

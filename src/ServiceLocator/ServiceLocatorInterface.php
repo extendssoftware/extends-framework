@@ -11,8 +11,8 @@ interface ServiceLocatorInterface
      * A shared service will be created when extra is null. If not, a managed service will be created. An exception
      * will be thrown when no service is found for key or service is an non object.
      *
-     * @param string     $key
-     * @param array|null $extra
+     * @param string       $key
+     * @param mixed[]|null $extra
      *
      * @return object
      * @throws ServiceLocatorException
@@ -22,7 +22,7 @@ interface ServiceLocatorInterface
     /**
      * Get global config.
      *
-     * @return array
+     * @return mixed[]
      */
     public function getConfig(): array;
 

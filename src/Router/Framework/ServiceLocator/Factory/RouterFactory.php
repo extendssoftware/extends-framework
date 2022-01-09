@@ -18,7 +18,7 @@ class RouterFactory implements ServiceFactoryInterface
      *
      * @param string                  $key
      * @param ServiceLocatorInterface $serviceLocator
-     * @param array|null              $extra
+     * @param mixed[]|null            $extra
      *
      * @return RouterInterface
      * @throws ServiceLocatorException
@@ -43,7 +43,7 @@ class RouterFactory implements ServiceFactoryInterface
      * Create RouterInterface from config.
      *
      * @param ServiceLocatorInterface $serviceLocator
-     * @param array                   $config
+     * @param mixed[]                 $config
      *
      * @return RouteInterface
      * @throws ServiceLocatorException
@@ -64,7 +64,7 @@ class RouterFactory implements ServiceFactoryInterface
      *
      * @param ServiceLocatorInterface $serviceLocator
      * @param RouteInterface          $route
-     * @param array                   $children
+     * @param mixed[]                 $children
      * @param bool|null               $abstract
      *
      * @return RouteInterface
@@ -76,6 +76,7 @@ class RouterFactory implements ServiceFactoryInterface
         array $children,
         bool $abstract = null
     ): RouteInterface {
+        /** @var GroupRoute $group */
         $group = $serviceLocator->getService(GroupRoute::class, [
             'route' => $route,
             'abstract' => $abstract,
@@ -88,7 +89,6 @@ class RouterFactory implements ServiceFactoryInterface
             );
         }
 
-        /** @noinspection PhpIncompatibleReturnTypeInspection */
         return $group;
     }
 }

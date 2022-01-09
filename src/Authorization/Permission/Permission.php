@@ -93,7 +93,7 @@ class Permission implements PermissionInterface
     /**
      * Get exploded notation string.
      *
-     * @return array
+     * @return mixed[]
      */
     private function getSections(): array
     {

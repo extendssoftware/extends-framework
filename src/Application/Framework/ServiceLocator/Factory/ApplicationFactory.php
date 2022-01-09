@@ -31,7 +31,7 @@ class ApplicationFactory implements ServiceFactoryInterface
      * Get console application.
      *
      * @param ServiceLocatorInterface $serviceLocator
-     * @param array|null              $extra
+     * @param mixed[]|null            $extra
      *
      * @return ConsoleApplication
      * @throws ServiceLocatorException
@@ -40,31 +40,29 @@ class ApplicationFactory implements ServiceFactoryInterface
         ServiceLocatorInterface $serviceLocator,
         array $extra = null
     ): ConsoleApplication {
-        /** @noinspection PhpParamsInspection */
-        return new ConsoleApplication(
-            $serviceLocator->getService(ShellInterface::class),
-            $serviceLocator,
-            $extra['modules'] ?? []
-        );
+        /** @var ShellInterface $shell */
+        $shell = $serviceLocator->getService(ShellInterface::class);
+
+        return new ConsoleApplication($shell, $serviceLocator, $extra['modules'] ?? []);
     }
 
     /**
      * Get HTTP application.
      *
      * @param ServiceLocatorInterface $serviceLocator
-     * @param array|null              $extra
+     * @param mixed[]|null            $extra
      *
      * @return HttpApplication
      * @throws ServiceLocatorException
      */
     private function getHttpApplication(ServiceLocatorInterface $serviceLocator, array $extra = null): HttpApplication
     {
-        /** @noinspection PhpParamsInspection */
-        return new HttpApplication(
-            $serviceLocator->getService(MiddlewareChainInterface::class),
-            $serviceLocator->getService(RequestInterface::class),
-            $serviceLocator,
-            $extra['modules'] ?? []
-        );
+        /** @var MiddlewareChainInterface $middlewareChain */
+        $middlewareChain = $serviceLocator->getService(MiddlewareChainInterface::class);
+
+        /** @var RequestInterface $request */
+        $request = $serviceLocator->getService(RequestInterface::class);
+
+        return new HttpApplication($middlewareChain, $request, $serviceLocator, $extra['modules'] ?? []);
     }
 }

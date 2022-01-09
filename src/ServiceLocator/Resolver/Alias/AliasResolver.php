@@ -11,7 +11,7 @@ class AliasResolver implements ResolverInterface
     /**
      * An associative array which holds the aliases.
      *
-     * @var array
+     * @var mixed[]
      */
     private array $aliases = [];
 

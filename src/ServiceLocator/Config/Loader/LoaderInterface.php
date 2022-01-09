@@ -8,7 +8,7 @@ interface LoaderInterface
     /**
      * Load multiple configs and return them all in one indexed array.
      *
-     * @return array
+     * @return mixed[]
      * @throws LoaderException
      */
     public function load(): array;

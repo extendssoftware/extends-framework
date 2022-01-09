@@ -10,7 +10,7 @@ interface ShellInterface
      *
      * When arguments can not be matched, null will be returned.
      *
-     * @param array $arguments
+     * @param mixed[] $arguments
      *
      * @return ShellResultInterface|null
      */

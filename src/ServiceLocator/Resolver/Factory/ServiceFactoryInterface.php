@@ -12,7 +12,7 @@ interface ServiceFactoryInterface
      *
      * @param string                  $key
      * @param ServiceLocatorInterface $serviceLocator
-     * @param array|null              $extra
+     * @param mixed[]|null            $extra
      *
      * @return object
      * @throws ServiceFactoryException

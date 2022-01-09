@@ -18,15 +18,15 @@ class MethodNotAllowed extends LogicException implements MethodRouteException
     /**
      * Allowed HTTP methods.
      *
-     * @var array
+     * @var string[]
      */
     private array $allowedMethods;
 
     /**
      * MethodNotAllowed constructor.
      *
-     * @param string $method
-     * @param array  $allowedMethods
+     * @param string   $method
+     * @param string[] $allowedMethods
      */
     public function __construct(string $method, array $allowedMethods)
     {
@@ -49,7 +49,7 @@ class MethodNotAllowed extends LogicException implements MethodRouteException
     /**
      * Get all allowed methods.
      *
-     * @return array
+     * @return string[]
      */
     public function getAllowedMethods(): array
     {
@@ -59,7 +59,7 @@ class MethodNotAllowed extends LogicException implements MethodRouteException
     /**
      * Add allowed methods.
      *
-     * @param array $methods
+     * @param string[] $methods
      *
      * @return MethodNotAllowed
      */

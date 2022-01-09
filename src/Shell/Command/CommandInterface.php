@@ -31,7 +31,7 @@ interface CommandInterface
     /**
      * Get parameters.
      *
-     * @return array
+     * @return mixed[]
      */
     public function getParameters(): array;
 }

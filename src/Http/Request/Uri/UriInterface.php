@@ -35,7 +35,7 @@ interface UriInterface
     /**
      * Get fragment from URI.
      *
-     * @return array
+     * @return mixed[]
      */
     public function getFragment(): array;
 
@@ -70,7 +70,7 @@ interface UriInterface
     /**
      * Get query from URI.
      *
-     * @return array
+     * @return mixed[]
      */
     public function getQuery(): array;
 
@@ -115,7 +115,7 @@ interface UriInterface
     /**
      * Return new instance with fragment.
      *
-     * @param array $fragment
+     * @param mixed[] $fragment
      *
      * @return UriInterface
      */
@@ -160,7 +160,7 @@ interface UriInterface
     /**
      * Return new instance with query.
      *
-     * @param array $query
+     * @param mixed[] $query
      *
      * @return UriInterface
      */

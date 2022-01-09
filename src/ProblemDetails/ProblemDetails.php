@@ -43,19 +43,19 @@ class ProblemDetails implements ProblemDetailsInterface
     /**
      * Additional members.
      *
-     * @var array|null
+     * @var mixed[]|null
      */
     private ?array $additional;
 
     /**
      * Problem constructor.
      *
-     * @param string      $type
-     * @param string      $title
-     * @param string      $detail
-     * @param int         $status
-     * @param string|null $instance
-     * @param array|null  $additional
+     * @param string       $type
+     * @param string       $title
+     * @param string       $detail
+     * @param int          $status
+     * @param string|null  $instance
+     * @param mixed[]|null $additional
      */
     public function __construct(
         string $type,

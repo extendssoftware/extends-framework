@@ -27,7 +27,7 @@ class JsonSerializer implements SerializerInterface
      *
      * @param ResourceInterface $resource
      *
-     * @return array
+     * @return mixed[]
      * @throws RouterException
      */
     private function toArray(ResourceInterface $resource): array
@@ -48,7 +48,7 @@ class JsonSerializer implements SerializerInterface
      *
      * @param LinkInterface[]|LinkInterface[][] $links
      *
-     * @return array
+     * @return mixed[]
      * @throws RouterException
      */
     private function serializeLinks(array $links): array
@@ -75,7 +75,7 @@ class JsonSerializer implements SerializerInterface
      *
      * @param ResourceInterface[]|ResourceInterface[][] $resources
      *
-     * @return array
+     * @return mixed[]
      * @throws RouterException
      */
     private function serializeResources(array $resources): array
@@ -97,7 +97,7 @@ class JsonSerializer implements SerializerInterface
      *
      * @param AttributeInterface[] $attributes
      *
-     * @return array
+     * @return mixed[]
      */
     private function serializeAttributes(array $attributes): array
     {

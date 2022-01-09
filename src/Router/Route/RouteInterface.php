@@ -26,8 +26,8 @@ interface RouteInterface
      * An exception will be thrown when routes for path can not be found.
      *
      * @param RequestInterface $request
-     * @param array            $path
-     * @param array            $parameters
+     * @param mixed[]          $path
+     * @param mixed[]          $parameters
      *
      * @return RequestInterface
      */

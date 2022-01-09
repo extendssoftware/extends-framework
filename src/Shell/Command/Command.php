@@ -31,7 +31,7 @@ class Command implements CommandInterface
     /**
      * Extra command parameters.
      *
-     * @var array
+     * @var mixed[]
      */
     private array $parameters;
 
@@ -41,7 +41,7 @@ class Command implements CommandInterface
      * @param string              $name
      * @param string              $description
      * @param DefinitionInterface $definition
-     * @param array|null          $parameters
+     * @param mixed[]|null        $parameters
      */
     public function __construct(
         string $name,

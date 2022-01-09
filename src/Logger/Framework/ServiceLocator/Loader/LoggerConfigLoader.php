@@ -29,7 +29,7 @@ class LoggerConfigLoader implements LoaderInterface
     /**
      * Service locator config for Logger component.
      *
-     * @return array
+     * @return mixed[]
      */
     public function load(): array
     {

@@ -8,14 +8,14 @@ class ParseResult implements ParseResultInterface
     /**
      * Parsed data.
      *
-     * @var array
+     * @var mixed[]
      */
     private array $parsed;
 
     /**
      * Remaining data when not in strict mode.
      *
-     * @var array
+     * @var mixed[]
      */
     private array $remaining;
 
@@ -29,8 +29,8 @@ class ParseResult implements ParseResultInterface
     /**
      * Create new parse result.
      *
-     * @param array $parsed
-     * @param array $remaining
+     * @param mixed[] $parsed
+     * @param mixed[] $remaining
      * @param bool  $strict
      */
     public function __construct(array $parsed, array $remaining, bool $strict)

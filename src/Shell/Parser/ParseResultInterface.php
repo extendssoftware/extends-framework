@@ -8,14 +8,14 @@ interface ParseResultInterface
     /**
      * Get parsed data.
      *
-     * @return array
+     * @return mixed[]
      */
     public function getParsed(): array;
 
     /**
      * Get remaining data when not in strict mode.
      *
-     * @return array
+     * @return mixed[]
      */
     public function getRemaining(): array;
 

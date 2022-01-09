@@ -15,7 +15,7 @@ interface ParserInterface
      * will be thrown. Arguments that can not be parsed will be added to the remaining data in the parse result.
      *
      * @param DefinitionInterface $definition
-     * @param array               $arguments
+     * @param mixed[]             $arguments
      * @param bool|null           $strict
      *
      * @return ParseResultInterface

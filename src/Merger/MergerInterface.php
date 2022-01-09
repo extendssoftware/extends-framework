@@ -8,10 +8,10 @@ interface MergerInterface
     /**
      * Merge right into left.
      *
-     * @param array $left
-     * @param array $right
+     * @param mixed[] $left
+     * @param mixed[] $right
      *
-     * @return array
+     * @return mixed[]
      * @throws MergerException
      */
     public function merge(array $left, array $right): array;

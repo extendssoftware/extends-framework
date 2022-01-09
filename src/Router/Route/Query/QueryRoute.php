@@ -26,13 +26,13 @@ class QueryRoute implements RouteInterface, StaticFactoryInterface
     /**
      * Default parameters to return when route is matched.
      *
-     * @var array
+     * @var mixed[]
      */
     private array $parameters;
 
     /**
-     * @param array      $validators
-     * @param array|null $parameters
+     * @param mixed[]      $validators
+     * @param mixed[]|null $parameters
      */
     public function __construct(array $validators, array $parameters = null)
     {

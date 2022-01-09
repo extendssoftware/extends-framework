@@ -41,7 +41,7 @@ class CacheLoader implements LoaderInterface
     /**
      * Save config to file.
      *
-     * @param array $config
+     * @param mixed[] $config
      *
      * @return CacheLoader
      */

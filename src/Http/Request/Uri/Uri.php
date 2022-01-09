@@ -50,14 +50,14 @@ class Uri implements UriInterface
     /**
      * Query or the URI.
      *
-     * @var array
+     * @var mixed[]
      */
     private array $query = [];
 
     /**
      * Fragment of the URI.
      *
-     * @var array
+     * @var mixed[]
      */
     private array $fragment = [];
 
@@ -334,7 +334,7 @@ class Uri implements UriInterface
     /**
      * Create URI from environment variables.
      *
-     * @param array $environment
+     * @param mixed[] $environment
      *
      * @return UriInterface
      */

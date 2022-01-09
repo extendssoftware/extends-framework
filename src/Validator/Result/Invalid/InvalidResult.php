@@ -24,16 +24,16 @@ class InvalidResult implements ResultInterface
     /**
      * Message parameters.
      *
-     * @var array
+     * @var mixed[]
      */
     private array $parameters;
 
     /**
      * Violation constructor.
      *
-     * @param string $code
-     * @param string $message
-     * @param array  $parameters
+     * @param string  $code
+     * @param string  $message
+     * @param mixed[] $parameters
      */
     public function __construct(string $code, string $message, array $parameters)
     {
@@ -52,6 +52,7 @@ class InvalidResult implements ResultInterface
 
     /**
      * @inheritDoc
+     * @return mixed[]
      */
     public function jsonSerialize(): array
     {

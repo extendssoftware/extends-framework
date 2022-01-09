@@ -14,7 +14,7 @@ interface LoggerInterface
      *
      * @param string                 $message
      * @param PriorityInterface|null $priority
-     * @param array|null             $metaData
+     * @param mixed[]|null           $metaData
      *
      * @return LoggerInterface
      */

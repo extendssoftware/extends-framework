@@ -43,7 +43,7 @@ interface ProblemDetailsInterface
     /**
      * Return additional members.
      *
-     * @return array|null
+     * @return mixed[]|null
      */
     public function getAdditional(): ?array;
 }

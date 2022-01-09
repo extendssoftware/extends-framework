@@ -8,7 +8,7 @@ interface TaskInterface
     /**
      * Execute task.
      *
-     * @param array $data
+     * @param mixed[] $data
      *
      * @return void
      * @throws TaskException

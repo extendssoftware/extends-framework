@@ -8,7 +8,7 @@ interface RouteMatchInterface
     /**
      * Get merged parameters from route.
      *
-     * @return array
+     * @return mixed[]
      */
     public function getParameters(): array;
 

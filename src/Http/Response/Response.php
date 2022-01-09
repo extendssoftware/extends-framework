@@ -18,7 +18,7 @@ class Response implements ResponseInterface, StaticFactoryInterface
     /**
      * Response headers.
      *
-     * @var array
+     * @var mixed[]
      */
     private array $headers = [];
 

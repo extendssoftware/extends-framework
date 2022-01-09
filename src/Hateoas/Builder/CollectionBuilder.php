@@ -15,13 +15,13 @@ class CollectionBuilder extends Builder
      *
      * @param RouterInterface $router
      * @param string          $route
-     * @param array           $parameters
+     * @param mixed[]         $parameters
      * @param string          $rel
-     * @param array           $resources
+     * @param mixed[]         $resources
      * @param int             $limit
      * @param int             $page
      * @param int             $total
-     * @param array|null      $keys
+     * @param mixed[]|null    $keys
      *
      * @throws RouterException
      */

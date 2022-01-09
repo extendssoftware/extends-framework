@@ -17,7 +17,7 @@ class ShellResult implements ShellResultInterface
     /**
      * Parsed data for command.
      *
-     * @var array
+     * @var mixed[]
      */
     private array $data;
 
@@ -25,7 +25,7 @@ class ShellResult implements ShellResultInterface
      * Create new shell result.
      *
      * @param CommandInterface $command
-     * @param array            $data
+     * @param mixed[]          $data
      */
     public function __construct(CommandInterface $command, array $data)
     {

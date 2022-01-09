@@ -22,15 +22,15 @@ class HostRoute implements RouteInterface, StaticFactoryInterface
     /**
      * Default parameters to return.
      *
-     * @var array
+     * @var mixed[]
      */
     private array $parameters;
 
     /**
      * Create a method route.
      *
-     * @param string     $host
-     * @param array|null $parameters
+     * @param string       $host
+     * @param mixed[]|null $parameters
      */
     public function __construct(string $host, array $parameters = null)
     {

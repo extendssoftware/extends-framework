@@ -18,21 +18,21 @@ class ServiceLocator implements ServiceLocatorInterface
     /**
      * An associative array with all the shared services.
      *
-     * @var array
+     * @var mixed[]
      */
     private array $shared = [];
 
     /**
      * Service locator config.
      *
-     * @var array
+     * @var mixed[]
      */
     private array $config;
 
     /**
      * ServiceLocator constructor.
      *
-     * @param array $config
+     * @param mixed[] $config
      */
     public function __construct(array $config)
     {

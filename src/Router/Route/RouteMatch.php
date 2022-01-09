@@ -8,7 +8,7 @@ class RouteMatch implements RouteMatchInterface
     /**
      * Matched parameters.
      *
-     * @var array
+     * @var mixed[]
      */
     private array $parameters;
 
@@ -22,8 +22,8 @@ class RouteMatch implements RouteMatchInterface
     /**
      * Create a route match.
      *
-     * @param array $parameters
-     * @param int   $pathOffset
+     * @param mixed[] $parameters
+     * @param int     $pathOffset
      */
     public function __construct(array $parameters, int $pathOffset)
     {

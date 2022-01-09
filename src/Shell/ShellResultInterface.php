@@ -17,7 +17,7 @@ interface ShellResultInterface
     /**
      * Get parsed data.
      *
-     * @return array
+     * @return mixed[]
      */
     public function getData(): array;
 }

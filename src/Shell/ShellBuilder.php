@@ -97,11 +97,11 @@ class ShellBuilder implements ShellBuilderInterface
     /**
      * Add command to shell.
      *
-     * @param string     $name
-     * @param string     $description
-     * @param array|null $operands
-     * @param array|null $options
-     * @param array|null $parameters
+     * @param string       $name
+     * @param string       $description
+     * @param mixed[]|null $operands
+     * @param mixed[]|null $options
+     * @param mixed[]|null $parameters
      *
      * @return ShellBuilder
      * @throws NoShortAndLongName When both short and long name are not given.

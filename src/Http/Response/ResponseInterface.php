@@ -27,7 +27,7 @@ interface ResponseInterface
     /**
      * Return headers.
      *
-     * @return array
+     * @return mixed[]
      */
     public function getHeaders(): array;
 
@@ -74,7 +74,7 @@ interface ResponseInterface
     /**
      * Return new instance with headers.
      *
-     * @param array $headers
+     * @param mixed[] $headers
      *
      * @return ResponseInterface
      */

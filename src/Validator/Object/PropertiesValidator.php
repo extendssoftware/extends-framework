@@ -46,8 +46,8 @@ class PropertiesValidator extends AbstractValidator
     /**
      * ObjectPropertiesValidator constructor.
      *
-     * @param array|null $properties
-     * @param bool|null  $strict
+     * @param mixed[]|null $properties
+     * @param bool|null    $strict
      */
     public function __construct(array $properties = null, bool $strict = null)
     {
@@ -142,9 +142,9 @@ class PropertiesValidator extends AbstractValidator
      * @return PropertiesValidator
      */
     public function addProperty(
-        string $property,
+        string             $property,
         ValidatorInterface $validator,
-        bool $optional = null
+        bool               $optional = null
     ): PropertiesValidator {
         $this->properties[$property] = new Property($property, $validator, $optional);
 

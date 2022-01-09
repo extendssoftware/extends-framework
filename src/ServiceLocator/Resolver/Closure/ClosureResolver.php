@@ -10,9 +10,9 @@ use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
 class ClosureResolver implements ResolverInterface
 {
     /**
-     * A associative array which holds the closures.
+     * An associative array which holds the closures.
      *
-     * @var array
+     * @var Closure[]
      */
     private array $closures = [];
 

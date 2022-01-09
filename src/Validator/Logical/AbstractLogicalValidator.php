@@ -20,7 +20,7 @@ abstract class AbstractLogicalValidator extends AbstractValidator
     /**
      * AbstractLogicalValidator constructor.
      *
-     * @param array|null $validators
+     * @param mixed[]|null $validators
      */
     public function __construct(array $validators = null)
     {

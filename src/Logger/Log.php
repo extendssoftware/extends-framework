@@ -20,23 +20,23 @@ class Log implements LogInterface
     /**
      * Log priority.
      *
-     * @var PriorityInterface|null
+     * @var PriorityInterface
      */
     private $priority;
 
     /**
      * Datetime when log happened.
      *
-     * @var DateTime|null
+     * @var DateTime
      */
-    private ?DateTime $datetime;
+    private DateTime $datetime;
 
     /**
      * Extra meta data.
      *
-     * @var array|null
+     * @var mixed[]
      */
-    private ?array $metaData;
+    private array $metaData;
 
     /**
      * Create new log.
@@ -44,7 +44,7 @@ class Log implements LogInterface
      * @param string                 $message
      * @param PriorityInterface|null $priority
      * @param DateTime|null          $datetime
-     * @param array|null             $metaData
+     * @param mixed[]|null           $metaData
      *
      * @throws Exception
      */

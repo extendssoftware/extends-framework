@@ -15,7 +15,7 @@ class ReflectionResolver implements ResolverInterface
     /**
      * An associative array which holds the classes.
      *
-     * @var array
+     * @var mixed[]
      */
     private array $classes = [];
 

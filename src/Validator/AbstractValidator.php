@@ -26,8 +26,8 @@ abstract class AbstractValidator implements ValidatorInterface, StaticFactoryInt
      *
      * When template can not be found, an exception will be thrown.
      *
-     * @param string     $code
-     * @param array|null $parameters
+     * @param string       $code
+     * @param mixed[]|null $parameters
      *
      * @return ResultInterface
      * @throws TemplateNotFound
@@ -45,7 +45,7 @@ abstract class AbstractValidator implements ValidatorInterface, StaticFactoryInt
     /**
      * Get an associative array with templates to use for invalid result.
      *
-     * @return array
+     * @return mixed[]
      */
     abstract protected function getTemplates(): array;
 }

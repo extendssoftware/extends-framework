@@ -39,7 +39,7 @@ class MethodRoute implements RouteInterface, StaticFactoryInterface
     /**
      * Default parameters to return.
      *
-     * @var array
+     * @var mixed[]
      */
     private array $parameters;
 
@@ -53,9 +53,9 @@ class MethodRoute implements RouteInterface, StaticFactoryInterface
     /**
      * Create a method route.
      *
-     * @param string     $method
-     * @param array|null $parameters
-     * @param array|null $validators
+     * @param string       $method
+     * @param mixed[]|null $parameters
+     * @param mixed[]|null $validators
      */
     public function __construct(string $method, array $parameters = null, array $validators = null)
     {

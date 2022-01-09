@@ -25,7 +25,7 @@ class PathRoute implements RouteInterface, StaticFactoryInterface
     /**
      * Default parameters to return when route is matched.
      *
-     * @var array
+     * @var mixed[]
      */
     private array $parameters;
 
@@ -48,9 +48,9 @@ class PathRoute implements RouteInterface, StaticFactoryInterface
      *
      * For example: /foo/:bar/:baz/qux
      *
-     * @param string     $path
-     * @param array|null $validators
-     * @param array|null $parameters
+     * @param string       $path
+     * @param mixed[]|null $validators
+     * @param mixed[]|null $parameters
      */
     public function __construct(string $path, array $validators = null, array $parameters = null)
     {

@@ -32,7 +32,7 @@ interface RequestInterface
     /**
      * Return custom attributes.
      *
-     * @return array
+     * @return mixed[]
      */
     public function getAttributes(): array;
 
@@ -58,7 +58,7 @@ interface RequestInterface
     /**
      * Return headers.
      *
-     * @return array
+     * @return mixed[]
      */
     public function getHeaders(): array;
 
@@ -79,7 +79,7 @@ interface RequestInterface
      *
      * @return string
      */
-    public function getMethod(): ?string;
+    public function getMethod(): string;
 
     /**
      * Return request URI.
@@ -91,7 +91,7 @@ interface RequestInterface
     /**
      * Return new instance with attributes.
      *
-     * @param array $attributes
+     * @param mixed[] $attributes
      *
      * @return RequestInterface
      */
@@ -121,7 +121,7 @@ interface RequestInterface
     /**
      * Return new instance with headers.
      *
-     * @param array $headers
+     * @param mixed[] $headers
      *
      * @return RequestInterface
      */

@@ -22,7 +22,7 @@ interface ResolverInterface
      *
      * @param string                  $key
      * @param ServiceLocatorInterface $serviceLocator
-     * @param array|null              $extra
+     * @param mixed[]|null            $extra
      *
      * @return object
      * @throws ResolverException
@@ -33,7 +33,7 @@ interface ResolverInterface
     /**
      * Create new resolver from config.
      *
-     * @param array $services
+     * @param mixed[] $services
      *
      * @return ResolverInterface
      */
