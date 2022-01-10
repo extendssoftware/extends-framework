@@ -18,13 +18,13 @@ interface BuilderInterface
     /**
      * Add link.
      *
-     * @param string        $rel
+     * @param string        $relation
      * @param LinkInterface $link
      * @param bool|null     $singular
      *
      * @return Builder
      */
-    public function addLink(string $rel, LinkInterface $link, bool $singular = null): BuilderInterface;
+    public function addLink(string $relation, LinkInterface $link, bool $singular = null): BuilderInterface;
 
     /**
      * Add attribute.
@@ -39,22 +39,22 @@ interface BuilderInterface
     /**
      * Add resource.
      *
-     * @param string           $rel
+     * @param string           $relation
      * @param BuilderInterface $resource
      * @param bool|null        $singular
      *
      * @return Builder
      */
-    public function addResource(string $rel, BuilderInterface $resource, bool $singular = null): BuilderInterface;
+    public function addResource(string $relation, BuilderInterface $resource, bool $singular = null): BuilderInterface;
 
     /**
-     * Set links rels to embed.
+     * Set links relations to embed.
      *
-     * @param string[]|string[][]|null $rels
+     * @param string[]|string[][]|null $relations
      *
      * @return BuilderInterface
      */
-    public function setToExpand(array $rels = null): BuilderInterface;
+    public function setToExpand(array $relations = null): BuilderInterface;
 
     /**
      * Set properties to project.

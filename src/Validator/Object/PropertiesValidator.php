@@ -164,7 +164,7 @@ class PropertiesValidator extends AbstractValidator
     /**
      * Check strictness.
      *
-     * If in strict mode, check if there more than the allowed properties.
+     * If in strict mode, check if there are more than the allowed properties.
      *
      * @param ContainerResult $container
      * @param mixed           $object

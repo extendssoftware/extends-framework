@@ -39,7 +39,7 @@ interface RequestInterface
     /**
      * Get attribute for key.
      *
-     * Default value default will be returned when attribute for key does not exists.
+     * Default value default will be returned when attribute for key does not exist.
      *
      * @param string $key
      * @param mixed  $default
@@ -65,7 +65,7 @@ interface RequestInterface
     /**
      * Get header value for name.
      *
-     * Default value default will be returned when header with name does not exists.
+     * Default value default will be returned when header with name does not exist.
      *
      * @param string $name
      * @param mixed  $default

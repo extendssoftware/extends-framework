@@ -36,7 +36,7 @@ class Option implements OptionInterface
     private ?string $long;
 
     /**
-     * If a argument is allowed.
+     * If an argument is allowed.
      *
      * @var bool
      */

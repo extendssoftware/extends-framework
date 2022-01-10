@@ -11,7 +11,7 @@ interface RouterInterface
     /**
      * Route request to corresponding controller.
      *
-     * An exception will be thrown when request can not be matched. A route can throw an more detailed exception.
+     * An exception will be thrown when request can not be matched. A route can throw a more detailed exception.
      *
      * @param RequestInterface $request
      *

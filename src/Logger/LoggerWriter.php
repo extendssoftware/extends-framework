@@ -15,7 +15,7 @@ class LoggerWriter
     private WriterInterface $writer;
 
     /**
-     * Whether or not the logger must be stopped.
+     * Whether logger must be stopped.
      *
      * @var bool
      */

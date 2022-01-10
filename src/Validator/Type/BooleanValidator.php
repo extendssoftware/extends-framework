@@ -11,7 +11,7 @@ use ExtendsFramework\Validator\Result\ResultInterface;
 class BooleanValidator extends AbstractValidator
 {
     /**
-     * When value is not a boolean.
+     * When value is not boolean.
      *
      * @const string
      */

@@ -6,7 +6,7 @@ namespace ExtendsFramework\Shell\About;
 interface AboutInterface
 {
     /**
-     * Get shell name.
+     * Get name of the shell.
      *
      * @return string
      */

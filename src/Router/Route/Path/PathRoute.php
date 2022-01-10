@@ -39,8 +39,8 @@ class PathRoute implements RouteInterface, StaticFactoryInterface
     /**
      * Create new path route.
      *
-     * Value of path must be a part of the, or the whole, request URI path to match. Variables can be used and must
-     * start with a semicolon followed by a name. The name must start with a letter and can only consist of
+     * Value of path must be a part of the request URI, or the whole request URI, path to match. Variables can be used
+     * and must start with a semicolon followed by a name. The name must start with a letter and can only consist of
      * alphanumeric characters. When this condition is not matched, the variable will be skipped.
      *
      * The variable name will be checked for the validator given in the validators array. When the variable name is

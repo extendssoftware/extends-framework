@@ -15,7 +15,7 @@ interface RoleInterface
     /**
      * Verify that role is equal.
      *
-     * Role is considered equal when names are exact the same, case sensitive.
+     * Role is considered equal when names are exact the same, case-sensitive.
      *
      * @param RoleInterface $role
      *

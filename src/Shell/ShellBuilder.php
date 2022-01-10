@@ -21,7 +21,7 @@ use ExtendsFramework\Shell\Suggester\SuggesterInterface;
 class ShellBuilder implements ShellBuilderInterface
 {
     /**
-     * Shell name.
+     * Name of the shell.
      *
      * @var string|null
      */
@@ -139,7 +139,7 @@ class ShellBuilder implements ShellBuilderInterface
     }
 
     /**
-     * Set shell name.
+     * Set name of the shell.
      *
      * @param string|null $name
      *

@@ -37,7 +37,7 @@ class AliasResolver implements ResolverInterface
     }
 
     /**
-     * If resolver has an alias for key, the alias will be used to get the service from the service locator. A
+     * If resolver has an alias for key, the alias will be used to get the service from the service locator. An
      * infinite loop between aliases and services will not be detected.
      *
      * @inheritDoc

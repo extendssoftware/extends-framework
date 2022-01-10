@@ -23,7 +23,7 @@ trait Routes
     private array $routes = [];
 
     /**
-     * Add route to routes.
+     * Add route to all the routes.
      *
      * @param RouteInterface $route
      * @param string         $name

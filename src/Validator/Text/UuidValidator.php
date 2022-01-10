@@ -12,7 +12,7 @@ use ExtendsFramework\Validator\Type\StringValidator;
 class UuidValidator extends AbstractValidator
 {
     /**
-     * When value is not an UUID.
+     * When value is not a UUID.
      *
      * @const string
      */
