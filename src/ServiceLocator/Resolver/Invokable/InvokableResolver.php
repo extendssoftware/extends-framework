@@ -38,7 +38,7 @@ class InvokableResolver implements ResolverInterface
     }
 
     /**
-     * An exception will be thrown when invokable is not a existing class.
+     * An exception will be thrown when invokable is not an existing class.
      *
      * @inheritDoc
      */

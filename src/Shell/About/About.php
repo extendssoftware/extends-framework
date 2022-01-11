@@ -6,14 +6,14 @@ namespace ExtendsFramework\Shell\About;
 class About implements AboutInterface
 {
     /**
-     * Shell name.
+     * Name of the shell.
      *
      * @var string
      */
     private string $name;
 
     /**
-     * Program to run shel..
+     * Program to run shell.
      *
      * @var string
      */

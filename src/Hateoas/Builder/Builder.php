@@ -63,7 +63,7 @@ class Builder implements BuilderInterface
     private array $resources = [];
 
     /**
-     * Embeddable link rels to expand in resource.
+     * Embeddable link relations to expand in resource.
      *
      * @var mixed[]
      */
@@ -79,12 +79,12 @@ class Builder implements BuilderInterface
     /**
      * @inheritDoc
      */
-    public function addLink(string $rel, LinkInterface $link, bool $singular = null): BuilderInterface
+    public function addLink(string $relation, LinkInterface $link, bool $singular = null): BuilderInterface
     {
         if ($singular ?? true) {
-            $this->links[$rel] = $link;
+            $this->links[$relation] = $link;
         } else {
-            $this->links[$rel][] = $link;
+            $this->links[$relation][] = $link;
         }
 
         return $this;
@@ -103,12 +103,12 @@ class Builder implements BuilderInterface
     /**
      * @inheritDoc
      */
-    public function addResource(string $rel, BuilderInterface $resource, bool $singular = null): BuilderInterface
+    public function addResource(string $relation, BuilderInterface $resource, bool $singular = null): BuilderInterface
     {
         if ($singular ?? true) {
-            $this->resources[$rel] = $resource;
+            $this->resources[$relation] = $resource;
         } else {
-            $this->resources[$rel][] = $resource;
+            $this->resources[$relation][] = $resource;
         }
 
         return $this;
@@ -117,9 +117,9 @@ class Builder implements BuilderInterface
     /**
      * @inheritDoc
      */
-    public function setToExpand(array $rels = null): BuilderInterface
+    public function setToExpand(array $relations = null): BuilderInterface
     {
-        $this->toExpand = $rels ?? [];
+        $this->toExpand = $relations ?? [];
 
         return $this;
     }
@@ -325,27 +325,27 @@ class Builder implements BuilderInterface
      * Get expanded resources.
      *
      * @param LinkInterface[]|LinkInterface[][] $links
-     * @param string[]                          $rels
+     * @param string[]                          $relations
      *
      * @return BuilderInterface[]
      * @throws ExpanderException
      * @throws LinkNotFound
      * @throws LinkNotEmbeddable
      */
-    private function getExpandedResources(array $links, array $rels): array
+    private function getExpandedResources(array $links, array $relations): array
     {
         $expanded = [];
-        foreach ($rels as $rel) {
-            if (!isset($links[$rel])) {
-                throw new LinkNotFound($rel);
+        foreach ($relations as $relation) {
+            if (!isset($links[$relation])) {
+                throw new LinkNotFound($relation);
             }
 
-            $link = $links[$rel];
+            $link = $links[$relation];
             if (!$link->isEmbeddable()) {
-                throw new LinkNotEmbeddable($rel);
+                throw new LinkNotEmbeddable($relation);
             }
 
-            $expanded[$rel] = $this->expander->expand($links[$rel]);
+            $expanded[$relation] = $this->expander->expand($links[$relation]);
         }
 
         return $expanded;

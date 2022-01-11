@@ -55,7 +55,7 @@ interface LogInterface
     public function withMetaData(array $metaData): LogInterface;
 
     /**
-     * Return new log with key and value added to the meta data.
+     * Return new log with key and value added to the metadata.
      *
      * @param string $key
      * @param mixed  $value

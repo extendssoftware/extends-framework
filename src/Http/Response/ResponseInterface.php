@@ -34,7 +34,7 @@ interface ResponseInterface
     /**
      * Get header value for name.
      *
-     * Default value default will be returned when header with name does not exists.
+     * Default value default will be returned when header with name does not exist.
      *
      * @param string $name
      * @param mixed  $default

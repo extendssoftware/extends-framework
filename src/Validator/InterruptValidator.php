@@ -15,7 +15,7 @@ class InterruptValidator implements ValidatorInterface
     private ValidatorInterface $validator;
 
     /**
-     * Whether or not the validation must be stopped.
+     * Whether validation must be stopped.
      *
      * @var bool
      */
