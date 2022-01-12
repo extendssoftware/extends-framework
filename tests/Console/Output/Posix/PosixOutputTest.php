@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace ExtendsFramework\Console\Output\Posix;
 
 use ExtendsFramework\Console\Formatter\Ansi\AnsiFormatter;
+use ExtendsFramework\Console\Output\Exception\FilenameNotWritable;
 use org\bovigo\vfs\vfsStream;
 use PHPUnit\Framework\TestCase;
 
@@ -145,5 +146,21 @@ class PosixOutputTest extends TestCase
             ->text('Hello world!', null, 3);
 
         $this->assertEmpty($root->getChild('posix')->getContent());
+    }
+
+    /**
+     * Filename not writable.
+     *
+     * Test that an exception will be thrown when filename can not be opened for writing.
+     *
+     * @covers \ExtendsFramework\Console\Output\Posix\PosixOutput::__construct()
+     * @covers \ExtendsFramework\Console\Output\Exception\FilenameNotWritable::__construct()
+     */
+    public function testFilenameNotReadable(): void
+    {
+        $this->expectException(FilenameNotWritable::class);
+        $this->expectExceptionMessage('Filename "/" can not be opened for writing.');
+
+        new PosixOutput(null, null, '/');
     }
 }
