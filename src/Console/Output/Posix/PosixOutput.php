@@ -5,7 +5,6 @@ namespace ExtendsFramework\Console\Output\Posix;
 
 use ExtendsFramework\Console\Formatter\Ansi\AnsiFormatter;
 use ExtendsFramework\Console\Formatter\FormatterInterface;
-use ExtendsFramework\Console\Output\Exception\FilenameNotWritable;
 use ExtendsFramework\Console\Output\OutputInterface;
 
 class PosixOutput implements OutputInterface
@@ -36,30 +35,13 @@ class PosixOutput implements OutputInterface
      *
      * @param FormatterInterface|null $formatter
      * @param int|null                $verbosity
-     * @param string|null             $filename
-     *
-     * @throws FilenameNotWritable When filename is not a resource or writable.
+     * @param resource|null           $stream
      */
-    public function __construct(FormatterInterface $formatter = null, int $verbosity = null, string $filename = null)
+    public function __construct(FormatterInterface $formatter = null, int $verbosity = null, $stream = null)
     {
         $this->formatter = $formatter ?? new AnsiFormatter();
         $this->verbosity = $verbosity ?? 1;
-
-        $filename = $filename ?: 'php://stdout';
-        $stream = @fopen($filename, 'w');
-        if (!is_resource($stream)) {
-            throw new FilenameNotWritable($filename);
-        }
-
-        $this->stream = $stream;
-    }
-
-    /**
-     * PosixOutput destruct.
-     */
-    public function __destruct()
-    {
-        fclose($this->stream);
+        $this->stream = is_resource($stream) ? $stream : STDOUT;
     }
 
     /**

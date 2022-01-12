@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace ExtendsFramework\Console\Input\Posix;
 
-use ExtendsFramework\Console\Input\Exception\FilenameNotReadable;
 use ExtendsFramework\Console\Input\InputInterface;
 
 class PosixInput implements InputInterface
@@ -18,27 +17,11 @@ class PosixInput implements InputInterface
     /**
      * PosixInput constructor.
      *
-     * @param string|null $filename
-     *
-     * @throws FilenameNotReadable When filename is not a resource or readable.
+     * @param resource|null $stream
      */
-    public function __construct(string $filename = null)
+    public function __construct($stream = null)
     {
-        $filename = $filename ?: 'php://stdin';
-        $stream = @fopen($filename, 'r');
-        if (!is_resource($stream)) {
-            throw new FilenameNotReadable($filename);
-        }
-
-        $this->stream = $stream;
-    }
-
-    /**
-     * PosixInput destruct.
-     */
-    public function __destruct()
-    {
-        fclose($this->stream);
+        $this->stream = is_resource($stream) ? $stream : STDIN;
     }
 
     /**

@@ -28,27 +28,11 @@ class Logger implements LoggerInterface
     /**
      * Logger constructor.
      *
-     * @param string|null $filename
-     *
-     * @throws FilenameNotWritable When filename is not a resource or writable.
+     * @param resource|null $stream
      */
-    public function __construct(string $filename = null)
+    public function __construct($stream = null)
     {
-        $filename = $filename ?: 'php://stderr';
-        $stream = @fopen($filename, 'w');
-        if (!is_resource($stream)) {
-            throw new FilenameNotWritable($filename);
-        }
-
-        $this->stream = $stream;
-    }
-
-    /**
-     * Logger destruct.
-     */
-    public function __destruct()
-    {
-        fclose($this->stream);
+        $this->stream = is_resource($stream) ? $stream : STDERR;
     }
 
     /**

@@ -84,7 +84,7 @@ class LoggerTest extends TestCase
         /**
          * @var WriterInterface    $writer
          */
-        $logger = new Logger($root->url() . '/error');
+        $logger = new Logger(fopen($root->url() . '/error', 'w'));
         $logger
             ->addWriter($writer)
             ->log('Error!');
@@ -124,21 +124,5 @@ class LoggerTest extends TestCase
             ->addWriter($writer)
             ->addWriter($writer)
             ->log('Error!', $priority, ['foo' => 'bar']);
-    }
-
-    /**
-     * Filename not writable.
-     *
-     * Test that an exception will be thrown when filename can not be opened for writing.
-     *
-     * @covers \ExtendsFramework\Logger\Logger::__construct()
-     * @covers \ExtendsFramework\Logger\Exception\FilenameNotWritable::__construct()
-     */
-    public function testFilenameNotReadable(): void
-    {
-        $this->expectException(FilenameNotWritable::class);
-        $this->expectExceptionMessage('Filename "/" can not be opened for writing.');
-
-        new Logger('/');
     }
 }

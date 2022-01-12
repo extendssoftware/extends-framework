@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace ExtendsFramework\Console\Output\Posix;
 
 use ExtendsFramework\Console\Formatter\Ansi\AnsiFormatter;
-use ExtendsFramework\Console\Output\Exception\FilenameNotWritable;
 use org\bovigo\vfs\vfsStream;
 use PHPUnit\Framework\TestCase;
 
@@ -23,7 +22,7 @@ class PosixOutputTest extends TestCase
     {
         $root = vfsStream::setup();
 
-        $output = new PosixOutput(null, null, $root->url() . '/posix');
+        $output = new PosixOutput(null, null, fopen($root->url() . '/posix', 'w'));
         $output->text('Hello world!');
 
         $this->assertEquals('Hello world!', $root->getChild('posix')->getContent());
@@ -42,7 +41,7 @@ class PosixOutputTest extends TestCase
     {
         $root = vfsStream::setup();
 
-        $output = new PosixOutput(null, null, $root->url() . '/posix');
+        $output = new PosixOutput(null, null, fopen($root->url() . '/posix', 'w'));
         $output->text('1234567890', $output->getFormatter()->setFixedWidth(5));
 
         $text = $root->getChild('posix')->getContent();
@@ -66,7 +65,7 @@ class PosixOutputTest extends TestCase
     {
         $root = vfsStream::setup();
 
-        $output = new PosixOutput(null, null, $root->url() . '/posix');
+        $output = new PosixOutput(null, null, fopen($root->url() . '/posix', 'w'));
         $output->line('Hello world!');
 
         $this->assertEquals('Hello world!' . "\n\r", $root->getChild('posix')->getContent());
@@ -86,7 +85,7 @@ class PosixOutputTest extends TestCase
     {
         $root = vfsStream::setup();
 
-        $output = new PosixOutput(null, null, $root->url() . '/posix');
+        $output = new PosixOutput(null, null, fopen($root->url() . '/posix', 'w'));
         $output->newLine();
 
         $this->assertEquals("\n\r", $root->getChild('posix')->getContent());
@@ -105,7 +104,7 @@ class PosixOutputTest extends TestCase
     {
         $root = vfsStream::setup();
 
-        $output = new PosixOutput(null, null, $root->url() . '/posix');
+        $output = new PosixOutput(null, null, fopen($root->url() . '/posix', 'w'));
         $formatter = $output->getFormatter();
 
         $this->assertInstanceOf(AnsiFormatter::class, $formatter);
@@ -125,7 +124,7 @@ class PosixOutputTest extends TestCase
     {
         $root = vfsStream::setup();
 
-        $output = new PosixOutput(null, null, $root->url() . '/posix');
+        $output = new PosixOutput(null, null, fopen($root->url() . '/posix', 'w'));
         $output
             ->setVerbosity(3)
             ->text('Hello world!', null, 2);
@@ -147,27 +146,11 @@ class PosixOutputTest extends TestCase
     {
         $root = vfsStream::setup();
 
-        $output = new PosixOutput(null, null, $root->url() . '/posix');
+        $output = new PosixOutput(null, null, fopen($root->url() . '/posix', 'w'));
         $output
             ->setVerbosity(2)
             ->text('Hello world!', null, 3);
 
         $this->assertEmpty($root->getChild('posix')->getContent());
-    }
-
-    /**
-     * Filename not writable.
-     *
-     * Test that an exception will be thrown when filename can not be opened for writing.
-     *
-     * @covers \ExtendsFramework\Console\Output\Posix\PosixOutput::__construct()
-     * @covers \ExtendsFramework\Console\Output\Exception\FilenameNotWritable::__construct()
-     */
-    public function testFilenameNotReadable(): void
-    {
-        $this->expectException(FilenameNotWritable::class);
-        $this->expectExceptionMessage('Filename "/" can not be opened for writing.');
-
-        new PosixOutput(null, null, '/');
     }
 }

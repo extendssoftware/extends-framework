@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace ExtendsFramework\Console\Input\Posix;
 
-use ExtendsFramework\Console\Input\Exception\FilenameNotReadable;
 use org\bovigo\vfs\vfsStream;
 use PHPUnit\Framework\TestCase;
 
@@ -23,7 +22,7 @@ class PosixInputTest extends TestCase
         $root = vfsStream::setup();
         file_put_contents($root->url() . '/posix', 'Hello world! How are you doing?');
 
-        $input = new PosixInput($root->url() . '/posix');
+        $input = new PosixInput(fopen($root->url() . '/posix', 'r'));
         $line = $input->line();
 
         $this->assertEquals('Hello world! How are you doing?', $line);
@@ -44,7 +43,7 @@ class PosixInputTest extends TestCase
         $root = vfsStream::setup();
         file_put_contents($root->url() . '/posix', 'Hello world! How are you doing?');
 
-        $input = new PosixInput($root->url() . '/posix');
+        $input = new PosixInput(fopen($root->url() . '/posix', 'r'));
         $line = $input->line(13);
 
         $this->assertEquals('Hello world!', $line);
@@ -64,7 +63,7 @@ class PosixInputTest extends TestCase
         $root = vfsStream::setup();
         file_put_contents($root->url() . '/posix', "\n\r");
 
-        $input = new PosixInput($root->url() . '/posix');
+        $input = new PosixInput(fopen($root->url() . '/posix', 'r'));
         $character = $input->line();
 
         $this->assertNull($character);
@@ -84,7 +83,7 @@ class PosixInputTest extends TestCase
         $root = vfsStream::setup();
         file_put_contents($root->url() . '/posix', 'b');
 
-        $input = new PosixInput($root->url() . '/posix');
+        $input = new PosixInput(fopen($root->url() . '/posix', 'r'));
         $character = $input->character();
 
         $this->assertEquals('b', $character);
@@ -104,7 +103,7 @@ class PosixInputTest extends TestCase
         $root = vfsStream::setup();
         file_put_contents($root->url() . '/posix', "\r\n");
 
-        $input = new PosixInput($root->url() . '/posix');
+        $input = new PosixInput(fopen($root->url() . '/posix', 'r'));
         $character = $input->character();
 
         $this->assertNull($character);
@@ -124,28 +123,12 @@ class PosixInputTest extends TestCase
         $root = vfsStream::setup();
         file_put_contents($root->url() . '/posix', 'aa');
 
-        $input = new PosixInput($root->url() . '/posix');
+        $input = new PosixInput(fopen($root->url() . '/posix', 'r'));
 
         $first = $input->character('b');
         $second = $input->character('a');
 
         $this->assertNull($first);
         $this->assertEquals('a', $second);
-    }
-
-    /**
-     * Filename not readable.
-     *
-     * Test that an exception will be thrown when filename can not be opened for reading.
-     *
-     * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::__construct()
-     * @covers \ExtendsFramework\Console\Input\Exception\FilenameNotReadable::__construct()
-     */
-    public function testFilenameNotReadable(): void
-    {
-        $this->expectException(FilenameNotReadable::class);
-        $this->expectExceptionMessage('Filename "foo" can not be opened for reading.');
-
-        new PosixInput('foo');
     }
 }
