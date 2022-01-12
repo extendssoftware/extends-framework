@@ -59,9 +59,7 @@ class Logger implements LoggerInterface
                     break;
                 }
             } catch (WriterException $exception) {
-                if (is_resource($this->stream)) {
-                    fwrite($this->stream, $exception->getMessage());
-                }
+                fwrite($this->stream, $exception->getMessage());
             }
         }
 
