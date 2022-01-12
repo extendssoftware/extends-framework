@@ -47,7 +47,7 @@ class LessThanValidatorTest extends TestCase
      *
      * Test that factory returns a LessOrEqualValidator.
      *
-     * @covers \ExtendsFramework\Validator\Comparison\LessOrEqualValidator::factory()
+     * @covers \ExtendsFramework\Validator\Comparison\LessThanValidator::factory()
      */
     public function testFactory(): void
     {

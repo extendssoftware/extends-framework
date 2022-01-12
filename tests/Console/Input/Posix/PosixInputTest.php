@@ -14,6 +14,7 @@ class PosixInputTest extends TestCase
      * Test that line ('Hello world! How are you doing?') can be read from input and is returned.
      *
      * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::__construct()
+     * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::__destruct()
      * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::line()
      */
     public function testLine(): void
@@ -21,7 +22,7 @@ class PosixInputTest extends TestCase
         $root = vfsStream::setup();
         file_put_contents($root->url() . '/posix', 'Hello world! How are you doing?');
 
-        $input = new PosixInput($root->url() . '/posix');
+        $input = new PosixInput(fopen($root->url() . '/posix', 'r'));
         $line = $input->line();
 
         $this->assertEquals('Hello world! How are you doing?', $line);
@@ -34,6 +35,7 @@ class PosixInputTest extends TestCase
      * as shortened text ('Hello world!').
      *
      * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::__construct()
+     * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::__destruct()
      * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::line()
      */
     public function testLineWithLength(): void
@@ -41,7 +43,7 @@ class PosixInputTest extends TestCase
         $root = vfsStream::setup();
         file_put_contents($root->url() . '/posix', 'Hello world! How are you doing?');
 
-        $input = new PosixInput($root->url() . '/posix');
+        $input = new PosixInput(fopen($root->url() . '/posix', 'r'));
         $line = $input->line(13);
 
         $this->assertEquals('Hello world!', $line);
@@ -53,6 +55,7 @@ class PosixInputTest extends TestCase
      * Test that null will be returned on newline.
      *
      * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::__construct()
+     * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::__destruct()
      * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::line()
      */
     public function testLineWithReturn(): void
@@ -60,7 +63,7 @@ class PosixInputTest extends TestCase
         $root = vfsStream::setup();
         file_put_contents($root->url() . '/posix', "\n\r");
 
-        $input = new PosixInput($root->url() . '/posix');
+        $input = new PosixInput(fopen($root->url() . '/posix', 'r'));
         $character = $input->line();
 
         $this->assertNull($character);
@@ -72,6 +75,7 @@ class PosixInputTest extends TestCase
      * Test that character ('b') can be read from input and is returned.
      *
      * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::__construct()
+     * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::__destruct()
      * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::character()
      */
     public function testCharacter(): void
@@ -79,7 +83,7 @@ class PosixInputTest extends TestCase
         $root = vfsStream::setup();
         file_put_contents($root->url() . '/posix', 'b');
 
-        $input = new PosixInput($root->url() . '/posix');
+        $input = new PosixInput(fopen($root->url() . '/posix', 'r'));
         $character = $input->character();
 
         $this->assertEquals('b', $character);
@@ -91,6 +95,7 @@ class PosixInputTest extends TestCase
      * Test that null will be returned on newline.
      *
      * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::__construct()
+     * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::__destruct()
      * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::character()
      */
     public function testCharacterWithReturn(): void
@@ -98,7 +103,7 @@ class PosixInputTest extends TestCase
         $root = vfsStream::setup();
         file_put_contents($root->url() . '/posix', "\r\n");
 
-        $input = new PosixInput($root->url() . '/posix');
+        $input = new PosixInput(fopen($root->url() . '/posix', 'r'));
         $character = $input->character();
 
         $this->assertNull($character);
@@ -110,6 +115,7 @@ class PosixInputTest extends TestCase
      * Test that only the allowed character ('a') is read and ('b') is ignored.
      *
      * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::__construct()
+     * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::__destruct()
      * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::character()
      */
     public function testAllowedCharacter(): void
@@ -117,7 +123,7 @@ class PosixInputTest extends TestCase
         $root = vfsStream::setup();
         file_put_contents($root->url() . '/posix', 'aa');
 
-        $input = new PosixInput($root->url() . '/posix');
+        $input = new PosixInput(fopen($root->url() . '/posix', 'r'));
 
         $first = $input->character('b');
         $second = $input->character('a');

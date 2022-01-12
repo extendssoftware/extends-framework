@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace ExtendsFramework\Logger;
 
-use ExtendsFramework\Logger\Decorator\DecoratorInterface;
+use ExtendsFramework\Logger\Exception\FilenameNotWritable;
 use ExtendsFramework\Logger\Priority\PriorityInterface;
 use ExtendsFramework\Logger\Writer\File\Exception\FileWriterFailed;
 use ExtendsFramework\Logger\Writer\WriterException;
@@ -17,10 +17,11 @@ class LoggerTest extends TestCase
     /**
      * Log.
      *
-     * Test that message will be logged with priority and meta data.
+     * Test that message will be logged with priority and metadata.
      *
      * @covers \ExtendsFramework\Logger\Logger::addWriter()
      * @covers \ExtendsFramework\Logger\LoggerWriter::__construct()
+     * @covers \ExtendsFramework\Logger\LoggerWriter::__destruct()
      * @covers \ExtendsFramework\Logger\LoggerWriter::getWriter()
      * @covers \ExtendsFramework\Logger\LoggerWriter::mustInterrupt()
      * @covers \ExtendsFramework\Logger\Logger::log()
@@ -57,6 +58,7 @@ class LoggerTest extends TestCase
      * Test that logger will write to streams when writer throws an exception will writing.
      *
      * @covers \ExtendsFramework\Logger\Logger::__construct()
+     * @covers \ExtendsFramework\Logger\Logger::__destruct()
      * @covers \ExtendsFramework\Logger\Logger::addWriter()
      * @covers \ExtendsFramework\Logger\LoggerWriter::__construct()
      * @covers \ExtendsFramework\Logger\LoggerWriter::getWriter()
@@ -81,11 +83,8 @@ class LoggerTest extends TestCase
 
         /**
          * @var WriterInterface    $writer
-         * @var DecoratorInterface $decorator
-         * @var PriorityInterface  $priority
          */
-
-        $logger = new Logger($root->url() . '/error');
+        $logger = new Logger(fopen($root->url() . '/error', 'w'));
         $logger
             ->addWriter($writer)
             ->log('Error!');
@@ -101,6 +100,7 @@ class LoggerTest extends TestCase
      *
      * @covers \ExtendsFramework\Logger\Logger::addWriter()
      * @covers \ExtendsFramework\Logger\LoggerWriter::__construct()
+     * @covers \ExtendsFramework\Logger\LoggerWriter::__destruct()
      * @covers \ExtendsFramework\Logger\LoggerWriter::getWriter()
      * @covers \ExtendsFramework\Logger\LoggerWriter::mustInterrupt()
      * @covers \ExtendsFramework\Logger\Logger::log()

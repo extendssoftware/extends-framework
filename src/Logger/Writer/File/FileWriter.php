@@ -126,7 +126,7 @@ class FileWriter extends AbstractWriter
             );
 
             $handle = @fopen($filename, 'ab');
-            if (!$handle || @fwrite($handle, $message . $this->newLine) === false) {
+            if (!is_resource($handle) || @fwrite($handle, $message . $this->newLine) === false) {
                 throw new FileWriterFailed($message, $filename);
             }
 

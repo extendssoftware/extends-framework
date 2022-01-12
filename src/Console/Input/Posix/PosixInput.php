@@ -10,18 +10,18 @@ class PosixInput implements InputInterface
     /**
      * Resource to read from.
      *
-     * @var resource|false
+     * @var resource
      */
     private $stream;
 
     /**
      * PosixInput constructor.
      *
-     * @param string|null $filename
+     * @param resource|null $stream
      */
-    public function __construct(string $filename = null)
+    public function __construct($stream = null)
     {
-        $this->stream = fopen($filename ?: 'php://stdin', 'r');
+        $this->stream = is_resource($stream) ? $stream : STDIN;
     }
 
     /**
@@ -29,14 +29,12 @@ class PosixInput implements InputInterface
      */
     public function line(int $length = null): ?string
     {
-        if (is_resource($this->stream)) {
-            $line = fgets($this->stream, max(1, $length ?? 4096));
-            if (is_string($line)) {
-                return rtrim($line, "\n\r") ?: null;
-            }
+        $line = fgets($this->stream, max(1, $length ?? 4096));
+        if (is_string($line)) {
+            $line = rtrim($line, "\n\r");
         }
 
-        return null;
+        return $line ?: null;
     }
 
     /**
@@ -44,17 +42,15 @@ class PosixInput implements InputInterface
      */
     public function character(string $allowed = null): ?string
     {
-        if (is_resource($this->stream)) {
-            $character = fgetc($this->stream);
-            if (is_string($character)) {
-                if (is_string($allowed) && strpos($allowed, $character) === false) {
-                    $character = '';
-                }
-
-                return rtrim($character, "\n\r") ?: null;
+        $character = fgetc($this->stream);
+        if (is_string($character)) {
+            if (is_string($allowed) && strpos($allowed, $character) === false) {
+                $character = '';
             }
+
+            $character = rtrim($character, "\n\r");
         }
 
-        return null;
+        return $character ?: null;
     }
 }

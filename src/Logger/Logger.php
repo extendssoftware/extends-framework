@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace ExtendsFramework\Logger;
 
 use Exception;
+use ExtendsFramework\Logger\Exception\FilenameNotWritable;
 use ExtendsFramework\Logger\Priority\PriorityInterface;
 use ExtendsFramework\Logger\Writer\WriterException;
 use ExtendsFramework\Logger\Writer\WriterInterface;
@@ -20,18 +21,18 @@ class Logger implements LoggerInterface
     /**
      * Resource to write to when a logger fails.
      *
-     * @var resource|false
+     * @var resource
      */
     private $stream;
 
     /**
      * Logger constructor.
      *
-     * @param string|null $filename
+     * @param resource|null $stream
      */
-    public function __construct(string $filename = null)
+    public function __construct($stream = null)
     {
-        $this->stream = fopen($filename ?: 'php://stderr', 'w');
+        $this->stream = is_resource($stream) ? $stream : STDERR;
     }
 
     /**
@@ -50,9 +51,7 @@ class Logger implements LoggerInterface
                     break;
                 }
             } catch (WriterException $exception) {
-                if (is_resource($this->stream)) {
-                    fwrite($this->stream, $exception->getMessage());
-                }
+                fwrite($this->stream, $exception->getMessage());
             }
         }
 

@@ -212,21 +212,23 @@ class Request implements RequestInterface, StaticFactoryInterface
     {
         return static::fromEnvironment(
             $extra['environment'] ?? $_SERVER,
-            $extra['stream'] ?? fopen('php://input', 'r')
+            $extra['stream'] ?? STDIN
         );
     }
 
     /**
      * Construct from environment variables.
      *
-     * @param mixed[]  $environment
-     * @param resource $stream
+     * @param mixed[]       $environment
+     * @param resource|null $stream
      *
      * @return RequestInterface
      * @throws InvalidRequestBody
      */
-    public static function fromEnvironment(array $environment, $stream): RequestInterface
+    public static function fromEnvironment(array $environment, $stream = null): RequestInterface
     {
+        $stream = is_resource($stream) ? $stream : STDIN;
+
         $headers = [];
         foreach ($environment as $name => $value) {
             if (strpos($name, 'HTTP_') === 0) {
@@ -247,6 +249,8 @@ class Request implements RequestInterface, StaticFactoryInterface
                 throw new InvalidRequestBody(json_last_error_msg());
             }
         }
+
+        fclose($stream);
 
         return (new Request())
             ->withMethod($environment['REQUEST_METHOD'])

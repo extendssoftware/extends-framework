@@ -47,7 +47,7 @@ class GreaterThanValidatorTest extends TestCase
      *
      * Test that factory returns a GreaterOrEqualValidator.
      *
-     * @covers \ExtendsFramework\Validator\Comparison\GreaterOrEqualValidator::factory()
+     * @covers \ExtendsFramework\Validator\Comparison\GreaterThanValidator::factory()
      */
     public function testFactory(): void
     {

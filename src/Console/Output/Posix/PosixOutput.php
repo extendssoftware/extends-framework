@@ -26,7 +26,7 @@ class PosixOutput implements OutputInterface
     /**
      * Resource to write to.
      *
-     * @var resource|false
+     * @var resource
      */
     private $stream;
 
@@ -35,13 +35,13 @@ class PosixOutput implements OutputInterface
      *
      * @param FormatterInterface|null $formatter
      * @param int|null                $verbosity
-     * @param string|null             $filename
+     * @param resource|null           $stream
      */
-    public function __construct(FormatterInterface $formatter = null, int $verbosity = null, string $filename = null)
+    public function __construct(FormatterInterface $formatter = null, int $verbosity = null, $stream = null)
     {
         $this->formatter = $formatter ?? new AnsiFormatter();
         $this->verbosity = $verbosity ?? 1;
-        $this->stream = fopen($filename ?: 'php://stdout', 'w');
+        $this->stream = is_resource($stream) ? $stream : STDOUT;
     }
 
     /**
@@ -54,9 +54,7 @@ class PosixOutput implements OutputInterface
                 $text = $formatter->create($text);
             }
 
-            if (is_resource($this->stream)) {
-                fwrite($this->stream, $text);
-            }
+            fwrite($this->stream, $text);
         }
 
         return $this;
