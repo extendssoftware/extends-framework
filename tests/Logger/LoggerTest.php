@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace ExtendsFramework\Logger;
 
-use ExtendsFramework\Logger\Decorator\DecoratorInterface;
+use ExtendsFramework\Logger\Exception\FilenameNotWritable;
 use ExtendsFramework\Logger\Priority\PriorityInterface;
 use ExtendsFramework\Logger\Writer\File\Exception\FileWriterFailed;
 use ExtendsFramework\Logger\Writer\WriterException;
@@ -17,7 +17,7 @@ class LoggerTest extends TestCase
     /**
      * Log.
      *
-     * Test that message will be logged with priority and meta data.
+     * Test that message will be logged with priority and metadata.
      *
      * @covers \ExtendsFramework\Logger\Logger::addWriter()
      * @covers \ExtendsFramework\Logger\LoggerWriter::__construct()
@@ -81,10 +81,7 @@ class LoggerTest extends TestCase
 
         /**
          * @var WriterInterface    $writer
-         * @var DecoratorInterface $decorator
-         * @var PriorityInterface  $priority
          */
-
         $logger = new Logger($root->url() . '/error');
         $logger
             ->addWriter($writer)
@@ -124,5 +121,21 @@ class LoggerTest extends TestCase
             ->addWriter($writer)
             ->addWriter($writer)
             ->log('Error!', $priority, ['foo' => 'bar']);
+    }
+
+    /**
+     * Filename not writable.
+     *
+     * Test that an exception will be thrown when filename can not be opened for writing.
+     *
+     * @covers \ExtendsFramework\Logger\Logger::__construct()
+     * @covers \ExtendsFramework\Logger\Exception\FilenameNotWritable::__construct()
+     */
+    public function testFilenameNotReadable(): void
+    {
+        $this->expectException(FilenameNotWritable::class);
+        $this->expectExceptionMessage('Filename "/" can not be opened for writing.');
+
+        new Logger('/');
     }
 }
