@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 namespace ExtendsFramework\Logger;
 
-use Exception;
-use ExtendsFramework\Logger\Exception\FilenameNotWritable;
 use ExtendsFramework\Logger\Priority\PriorityInterface;
 use ExtendsFramework\Logger\Writer\WriterException;
 use ExtendsFramework\Logger\Writer\WriterInterface;
@@ -19,39 +17,18 @@ class Logger implements LoggerInterface
     private array $writers = [];
 
     /**
-     * Resource to write to when a logger fails.
-     *
-     * @var resource
-     */
-    private $stream;
-
-    /**
-     * Logger constructor.
-     *
-     * @param resource|null $stream
-     */
-    public function __construct($stream = null)
-    {
-        $this->stream = is_resource($stream) ? $stream : STDERR;
-    }
-
-    /**
      * @inheritDoc
-     * @throws Exception
+     * @throws WriterException When writer failed to write.
      */
     public function log(string $message, PriorityInterface $priority = null, array $metaData = null): LoggerInterface
     {
         $log = new Log($message, $priority ?? null, null, $metaData ?? null);
         foreach ($this->writers as $writer) {
-            try {
-                $writer
-                    ->getWriter()
-                    ->write($log);
-                if ($writer->mustInterrupt()) {
-                    break;
-                }
-            } catch (WriterException $exception) {
-                fwrite($this->stream, $exception->getMessage());
+            $writer
+                ->getWriter()
+                ->write($log);
+            if ($writer->mustInterrupt()) {
+                break;
             }
         }
 

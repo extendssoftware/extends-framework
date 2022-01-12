@@ -45,8 +45,6 @@ class Log implements LogInterface
      * @param PriorityInterface|null $priority
      * @param DateTime|null          $datetime
      * @param mixed[]|null           $metaData
-     *
-     * @throws Exception
      */
     public function __construct(
         string $message,
