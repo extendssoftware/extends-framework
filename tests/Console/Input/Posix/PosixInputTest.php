@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace ExtendsFramework\Console\Input\Posix;
 
+use ExtendsFramework\Console\Input\Exception\FilenameNotReadable;
 use org\bovigo\vfs\vfsStream;
 use PHPUnit\Framework\TestCase;
 
@@ -124,5 +125,21 @@ class PosixInputTest extends TestCase
 
         $this->assertNull($first);
         $this->assertEquals('a', $second);
+    }
+
+    /**
+     * Filename not readable.
+     *
+     * Test that an exception will be thrown when filename can not be opened for reading.
+     *
+     * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::__construct()
+     * @covers \ExtendsFramework\Console\Input\Exception\FilenameNotReadable::__construct()
+     */
+    public function testFilenameNotReadable(): void
+    {
+        $this->expectException(FilenameNotReadable::class);
+        $this->expectExceptionMessage('Filename "foo" can not be opened for reading.');
+
+        new PosixInput('foo');
     }
 }

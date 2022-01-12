@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace ExtendsFramework\Console\Input\Posix;
 
+use ExtendsFramework\Console\Input\Exception\FilenameNotReadable;
 use ExtendsFramework\Console\Input\InputInterface;
 
 class PosixInput implements InputInterface
@@ -10,7 +11,7 @@ class PosixInput implements InputInterface
     /**
      * Resource to read from.
      *
-     * @var resource|false
+     * @var resource
      */
     private $stream;
 
@@ -18,10 +19,18 @@ class PosixInput implements InputInterface
      * PosixInput constructor.
      *
      * @param string|null $filename
+     *
+     * @throws FilenameNotReadable When filename is not a resource or readable.
      */
     public function __construct(string $filename = null)
     {
-        $this->stream = fopen($filename ?: 'php://stdin', 'r');
+        $filename = $filename ?: 'php://stdin';
+        $stream = @fopen($filename, 'r');
+        if (!is_resource($stream)) {
+            throw new FilenameNotReadable($filename);
+        }
+
+        $this->stream = $stream;
     }
 
     /**
@@ -29,14 +38,12 @@ class PosixInput implements InputInterface
      */
     public function line(int $length = null): ?string
     {
-        if (is_resource($this->stream)) {
-            $line = fgets($this->stream, max(1, $length ?? 4096));
-            if (is_string($line)) {
-                return rtrim($line, "\n\r") ?: null;
-            }
+        $line = fgets($this->stream, max(1, $length ?? 4096));
+        if (is_string($line)) {
+            $line = rtrim($line, "\n\r");
         }
 
-        return null;
+        return $line ?: null;
     }
 
     /**
@@ -44,17 +51,15 @@ class PosixInput implements InputInterface
      */
     public function character(string $allowed = null): ?string
     {
-        if (is_resource($this->stream)) {
-            $character = fgetc($this->stream);
-            if (is_string($character)) {
-                if (is_string($allowed) && strpos($allowed, $character) === false) {
-                    $character = '';
-                }
-
-                return rtrim($character, "\n\r") ?: null;
+        $character = fgetc($this->stream);
+        if (is_string($character)) {
+            if (is_string($allowed) && strpos($allowed, $character) === false) {
+                $character = '';
             }
+
+            $character = rtrim($character, "\n\r");
         }
 
-        return null;
+        return $character ?: null;
     }
 }
