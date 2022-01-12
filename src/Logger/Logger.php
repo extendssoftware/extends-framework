@@ -30,7 +30,7 @@ class Logger implements LoggerInterface
      *
      * @param string|null $filename
      *
-     * @throws FilenameNotWritable
+     * @throws FilenameNotWritable When filename is not a resource or writable.
      */
     public function __construct(string $filename = null)
     {
