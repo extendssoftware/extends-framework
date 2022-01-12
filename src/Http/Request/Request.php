@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace ExtendsFramework\Http\Request;
 
+use ExtendsFramework\Http\Request\Exception\FilenameNotReadable;
 use ExtendsFramework\Http\Request\Exception\InvalidRequestBody;
 use ExtendsFramework\Http\Request\Uri\Uri;
 use ExtendsFramework\Http\Request\Uri\UriInterface;
@@ -207,26 +208,33 @@ class Request implements RequestInterface, StaticFactoryInterface
     /**
      * @inheritDoc
      * @throws InvalidRequestBody
+     * @throws FilenameNotReadable
      */
     public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): object
     {
         return static::fromEnvironment(
             $extra['environment'] ?? $_SERVER,
-            $extra['stream'] ?? fopen('php://input', 'r')
+            $extra['filename'] ?? 'php://input'
         );
     }
 
     /**
      * Construct from environment variables.
      *
-     * @param mixed[]  $environment
-     * @param resource $stream
+     * @param mixed[] $environment
+     * @param string  $filename
      *
      * @return RequestInterface
      * @throws InvalidRequestBody
+     * @throws FilenameNotReadable
      */
-    public static function fromEnvironment(array $environment, $stream): RequestInterface
+    public static function fromEnvironment(array $environment, string $filename): RequestInterface
     {
+        $stream = @fopen($filename, 'r');
+        if (!is_resource($stream)) {
+            throw new FilenameNotReadable($filename);
+        }
+
         $headers = [];
         foreach ($environment as $name => $value) {
             if (strpos($name, 'HTTP_') === 0) {

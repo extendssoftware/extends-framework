@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace ExtendsFramework\Http\Request;
 
+use ExtendsFramework\Http\Request\Exception\FilenameNotReadable;
 use ExtendsFramework\Http\Request\Exception\InvalidRequestBody;
 use ExtendsFramework\Http\Request\Uri\UriInterface;
 use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
@@ -67,7 +68,7 @@ class RequestTest extends TestCase
         $environment['REQUEST_URI'] = '/foo/bar';
         $environment['HTTP_CONTENT_TYPE'] = 'application/json';
 
-        $request = Request::fromEnvironment($environment, fopen($root->url() . '/input', 'r'));
+        $request = Request::fromEnvironment($environment, $root->url() . '/input');
 
         $this->assertSame([], $request->getAttributes());
         $this->assertEquals((object)$body, $request->getBody());
@@ -223,7 +224,7 @@ class RequestTest extends TestCase
             'input' => '{"foo":"qux"',
         ]);
 
-        Request::fromEnvironment($_SERVER, fopen($root->url() . '/input', 'r'));
+        Request::fromEnvironment($_SERVER, $root->url() . '/input');
     }
 
     /**
@@ -244,7 +245,7 @@ class RequestTest extends TestCase
         $_SERVER['SERVER_PORT'] = 80;
         $_SERVER['REQUEST_URI'] = '/';
 
-        $request = Request::fromEnvironment($_SERVER, fopen($root->url() . '/input', 'r'));
+        $request = Request::fromEnvironment($_SERVER, $root->url() . '/input');
 
         $this->assertNull($request->getBody());
     }
@@ -275,9 +276,25 @@ class RequestTest extends TestCase
          */
         $request = Request::factory(RequestInterface::class, $serviceLocator, [
             'environment' => $environment,
-            'stream' => fopen($root->url() . '/input', 'r'),
+            'filename' => $root->url() . '/input', 'r',
         ]);
 
         $this->assertInstanceOf(RequestInterface::class, $request);
+    }
+
+    /**
+     * Filename not readable.
+     *
+     * Test that an exception will be thrown when filename can not be opened for reading.
+     *
+     * @covers \ExtendsFramework\Http\Request\Request::fromEnvironment()
+     * @covers \ExtendsFramework\Http\Request\Exception\FilenameNotReadable::__construct()
+     */
+    public function testFilenameNotReadable(): void
+    {
+        $this->expectException(FilenameNotReadable::class);
+        $this->expectExceptionMessage('Filename "foo" can not be opened for reading.');
+
+        Request::fromEnvironment([], 'foo');
     }
 }
