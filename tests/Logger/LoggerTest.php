@@ -16,7 +16,6 @@ class LoggerTest extends TestCase
      *
      * @covers \ExtendsFramework\Logger\Logger::addWriter()
      * @covers \ExtendsFramework\Logger\LoggerWriter::__construct()
-     * @covers \ExtendsFramework\Logger\LoggerWriter::__destruct()
      * @covers \ExtendsFramework\Logger\LoggerWriter::getWriter()
      * @covers \ExtendsFramework\Logger\LoggerWriter::mustInterrupt()
      * @covers \ExtendsFramework\Logger\Logger::log()
@@ -54,7 +53,6 @@ class LoggerTest extends TestCase
      *
      * @covers \ExtendsFramework\Logger\Logger::addWriter()
      * @covers \ExtendsFramework\Logger\LoggerWriter::__construct()
-     * @covers \ExtendsFramework\Logger\LoggerWriter::__destruct()
      * @covers \ExtendsFramework\Logger\LoggerWriter::getWriter()
      * @covers \ExtendsFramework\Logger\LoggerWriter::mustInterrupt()
      * @covers \ExtendsFramework\Logger\Logger::log()

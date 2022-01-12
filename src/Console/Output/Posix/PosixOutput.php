@@ -6,9 +6,17 @@ namespace ExtendsFramework\Console\Output\Posix;
 use ExtendsFramework\Console\Formatter\Ansi\AnsiFormatter;
 use ExtendsFramework\Console\Formatter\FormatterInterface;
 use ExtendsFramework\Console\Output\OutputInterface;
+use TypeError;
 
 class PosixOutput implements OutputInterface
 {
+    /**
+     * Resource to write to.
+     *
+     * @var resource
+     */
+    private $stream;
+
     /**
      * Text formatter.
      *
@@ -24,24 +32,27 @@ class PosixOutput implements OutputInterface
     private int $verbosity;
 
     /**
-     * Resource to write to.
-     *
-     * @var resource
-     */
-    private $stream;
-
-    /**
      * PosixOutput constructor.
      *
      * @param FormatterInterface|null $formatter
      * @param int|null                $verbosity
-     * @param resource|null           $stream
+     * @param mixed                   $stream
+     *
+     * @throws TypeError When stream not of type resource.
      */
     public function __construct(FormatterInterface $formatter = null, int $verbosity = null, $stream = null)
     {
+        $stream = $stream ?: fopen('php://stdout', 'w');
+        if (!is_resource($stream)) {
+            throw new TypeError(sprintf(
+                'Stream must be of type resource, %s given.',
+                gettype($stream)
+            ));
+        }
+
+        $this->stream = $stream;
         $this->formatter = $formatter ?? new AnsiFormatter();
         $this->verbosity = $verbosity ?? 1;
-        $this->stream = is_resource($stream) ? $stream : STDOUT;
     }
 
     /**

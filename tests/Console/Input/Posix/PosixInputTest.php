@@ -5,6 +5,7 @@ namespace ExtendsFramework\Console\Input\Posix;
 
 use org\bovigo\vfs\vfsStream;
 use PHPUnit\Framework\TestCase;
+use TypeError;
 
 class PosixInputTest extends TestCase
 {
@@ -14,7 +15,6 @@ class PosixInputTest extends TestCase
      * Test that line ('Hello world! How are you doing?') can be read from input and is returned.
      *
      * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::__construct()
-     * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::__destruct()
      * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::line()
      */
     public function testLine(): void
@@ -35,7 +35,6 @@ class PosixInputTest extends TestCase
      * as shortened text ('Hello world!').
      *
      * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::__construct()
-     * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::__destruct()
      * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::line()
      */
     public function testLineWithLength(): void
@@ -55,7 +54,6 @@ class PosixInputTest extends TestCase
      * Test that null will be returned on newline.
      *
      * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::__construct()
-     * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::__destruct()
      * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::line()
      */
     public function testLineWithReturn(): void
@@ -75,7 +73,6 @@ class PosixInputTest extends TestCase
      * Test that character ('b') can be read from input and is returned.
      *
      * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::__construct()
-     * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::__destruct()
      * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::character()
      */
     public function testCharacter(): void
@@ -95,7 +92,6 @@ class PosixInputTest extends TestCase
      * Test that null will be returned on newline.
      *
      * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::__construct()
-     * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::__destruct()
      * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::character()
      */
     public function testCharacterWithReturn(): void
@@ -115,7 +111,6 @@ class PosixInputTest extends TestCase
      * Test that only the allowed character ('a') is read and ('b') is ignored.
      *
      * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::__construct()
-     * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::__destruct()
      * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::character()
      */
     public function testAllowedCharacter(): void
@@ -130,5 +125,20 @@ class PosixInputTest extends TestCase
 
         $this->assertNull($first);
         $this->assertEquals('a', $second);
+    }
+
+    /**
+     * Stream not resource.
+     *
+     * Test that an exception will be thrown when filename can not be opened for reading.
+     *
+     * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::__construct()
+     */
+    public function testFilenameNotReadable(): void
+    {
+        $this->expectException(TypeError::class);
+        $this->expectExceptionMessage('Stream must be of type resource, string given.');
+
+        new PosixInput('foo');
     }
 }

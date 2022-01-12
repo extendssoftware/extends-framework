@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace ExtendsFramework\Console\Input\Posix;
 
 use ExtendsFramework\Console\Input\InputInterface;
+use TypeError;
 
 class PosixInput implements InputInterface
 {
@@ -17,11 +18,21 @@ class PosixInput implements InputInterface
     /**
      * PosixInput constructor.
      *
-     * @param resource|null $stream
+     * @param mixed $stream
+     *
+     * @throws TypeError When stream not of type resource.
      */
     public function __construct($stream = null)
     {
-        $this->stream = is_resource($stream) ? $stream : STDIN;
+        $stream = $stream ?: fopen('php://stdin', 'r');
+        if (!is_resource($stream)) {
+            throw new TypeError(sprintf(
+                'Stream must be of type resource, %s given.',
+                gettype($stream)
+            ));
+        }
+
+        $this->stream = $stream;
     }
 
     /**
