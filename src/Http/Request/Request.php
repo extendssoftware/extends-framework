@@ -8,6 +8,7 @@ use ExtendsFramework\Http\Request\Uri\Uri;
 use ExtendsFramework\Http\Request\Uri\UriInterface;
 use ExtendsFramework\ServiceLocator\Resolver\StaticFactory\StaticFactoryInterface;
 use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
+use TypeError;
 
 class Request implements RequestInterface, StaticFactoryInterface
 {
@@ -212,22 +213,28 @@ class Request implements RequestInterface, StaticFactoryInterface
     {
         return static::fromEnvironment(
             $extra['environment'] ?? $_SERVER,
-            $extra['stream'] ?? STDIN
+            $extra['stream'] ?? fopen('php://stdin', 'r')
         );
     }
 
     /**
      * Construct from environment variables.
      *
-     * @param mixed[]       $environment
-     * @param resource|null $stream
+     * @param mixed[]  $environment
+     * @param mixed    $stream
      *
      * @return RequestInterface
      * @throws InvalidRequestBody
+     * @throws TypeError When stream not of type resource.
      */
-    public static function fromEnvironment(array $environment, $stream = null): RequestInterface
+    public static function fromEnvironment(array $environment, $stream): RequestInterface
     {
-        $stream = is_resource($stream) ? $stream : STDIN;
+        if (!is_resource($stream)) {
+            throw new TypeError(sprintf(
+                'Stream must be of type resource, %s given.',
+                gettype($stream)
+            ));
+        }
 
         $headers = [];
         foreach ($environment as $name => $value) {

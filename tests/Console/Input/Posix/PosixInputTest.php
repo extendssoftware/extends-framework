@@ -134,7 +134,7 @@ class PosixInputTest extends TestCase
      *
      * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::__construct()
      */
-    public function testFilenameNotReadable(): void
+    public function testStreamNotResource(): void
     {
         $this->expectException(TypeError::class);
         $this->expectExceptionMessage('Stream must be of type resource, string given.');

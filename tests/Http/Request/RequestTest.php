@@ -3,11 +3,13 @@ declare(strict_types=1);
 
 namespace ExtendsFramework\Http\Request;
 
+use ExtendsFramework\Console\Input\Posix\PosixInput;
 use ExtendsFramework\Http\Request\Exception\InvalidRequestBody;
 use ExtendsFramework\Http\Request\Uri\UriInterface;
 use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
 use org\bovigo\vfs\vfsStream;
 use PHPUnit\Framework\TestCase;
+use TypeError;
 
 class RequestTest extends TestCase
 {
@@ -279,5 +281,20 @@ class RequestTest extends TestCase
         ]);
 
         $this->assertInstanceOf(RequestInterface::class, $request);
+    }
+
+    /**
+     * Stream not resource.
+     *
+     * Test that an exception will be thrown when filename can not be opened for reading.
+     *
+     * @covers \ExtendsFramework\Http\Request\Request::fromEnvironment()
+     */
+    public function testStreamNotResource(): void
+    {
+        $this->expectException(TypeError::class);
+        $this->expectExceptionMessage('Stream must be of type resource, string given.');
+
+        Request::fromEnvironment([], 'foo');
     }
 }
