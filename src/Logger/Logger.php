@@ -44,6 +44,14 @@ class Logger implements LoggerInterface
     }
 
     /**
+     * Logger destruct.
+     */
+    public function __destruct()
+    {
+        fclose($this->stream);
+    }
+
+    /**
      * @inheritDoc
      * @throws Exception
      */

@@ -15,6 +15,7 @@ class PosixInputTest extends TestCase
      * Test that line ('Hello world! How are you doing?') can be read from input and is returned.
      *
      * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::__construct()
+     * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::__destruct()
      * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::line()
      */
     public function testLine(): void
@@ -35,6 +36,7 @@ class PosixInputTest extends TestCase
      * as shortened text ('Hello world!').
      *
      * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::__construct()
+     * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::__destruct()
      * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::line()
      */
     public function testLineWithLength(): void
@@ -54,6 +56,7 @@ class PosixInputTest extends TestCase
      * Test that null will be returned on newline.
      *
      * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::__construct()
+     * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::__destruct()
      * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::line()
      */
     public function testLineWithReturn(): void
@@ -73,6 +76,7 @@ class PosixInputTest extends TestCase
      * Test that character ('b') can be read from input and is returned.
      *
      * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::__construct()
+     * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::__destruct()
      * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::character()
      */
     public function testCharacter(): void
@@ -92,6 +96,7 @@ class PosixInputTest extends TestCase
      * Test that null will be returned on newline.
      *
      * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::__construct()
+     * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::__destruct()
      * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::character()
      */
     public function testCharacterWithReturn(): void
@@ -111,6 +116,7 @@ class PosixInputTest extends TestCase
      * Test that only the allowed character ('a') is read and ('b') is ignored.
      *
      * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::__construct()
+     * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::__destruct()
      * @covers \ExtendsFramework\Console\Input\Posix\PosixInput::character()
      */
     public function testAllowedCharacter(): void

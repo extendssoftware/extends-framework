@@ -34,6 +34,14 @@ class PosixInput implements InputInterface
     }
 
     /**
+     * PosixInput destruct.
+     */
+    public function __destruct()
+    {
+        fclose($this->stream);
+    }
+
+    /**
      * @inheritDoc
      */
     public function line(int $length = null): ?string

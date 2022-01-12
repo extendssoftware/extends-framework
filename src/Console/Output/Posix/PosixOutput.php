@@ -55,6 +55,14 @@ class PosixOutput implements OutputInterface
     }
 
     /**
+     * PosixOutput destruct.
+     */
+    public function __destruct()
+    {
+        fclose($this->stream);
+    }
+
+    /**
      * @inheritDoc
      */
     public function text(string $text, FormatterInterface $formatter = null, int $verbosity = null): OutputInterface
