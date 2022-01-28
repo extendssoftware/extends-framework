@@ -42,7 +42,7 @@ class PosixOutput implements OutputInterface
      */
     public function __construct(FormatterInterface $formatter = null, int $verbosity = null, $stream = null)
     {
-        $stream = $stream ?: fopen('php://stdout', 'w');
+        $stream = $stream ?: fopen('php://output', 'w');
         if (!is_resource($stream)) {
             throw new TypeError(sprintf(
                 'Stream must be of type resource, %s given.',

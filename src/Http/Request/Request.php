@@ -213,7 +213,7 @@ class Request implements RequestInterface, StaticFactoryInterface
     {
         return static::fromEnvironment(
             $extra['environment'] ?? $_SERVER,
-            $extra['stream'] ?? fopen('php://stdin', 'r')
+            $extra['stream'] ?? fopen('php://input', 'r')
         );
     }
 
