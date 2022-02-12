@@ -5,6 +5,7 @@ namespace ExtendsFramework\Hateoas\Framework\Http\Middleware\Hateoas;
 
 use ExtendsFramework\Authorization\AuthorizerInterface;
 use ExtendsFramework\Hateoas\Builder\BuilderInterface;
+use ExtendsFramework\Hateoas\Builder\BuilderProviderInterface;
 use ExtendsFramework\Hateoas\Builder\Exception\AttributeNotFound;
 use ExtendsFramework\Hateoas\Builder\Exception\LinkNotEmbeddable;
 use ExtendsFramework\Hateoas\Builder\Exception\LinkNotFound;
@@ -19,6 +20,7 @@ use ExtendsFramework\Http\Request\RequestInterface;
 use ExtendsFramework\Http\Request\Uri\UriInterface;
 use ExtendsFramework\Http\Response\ResponseInterface;
 use ExtendsFramework\Identity\IdentityInterface;
+use ExtendsFramework\Router\RouterInterface;
 use ExtendsFramework\Security\SecurityServiceInterface;
 use PHPUnit\Framework\TestCase;
 
@@ -128,11 +130,17 @@ class HateoasMiddlewareTest extends TestCase
             ->method('build')
             ->willReturn($resource);
 
+        $provider = $this->createMock(BuilderProviderInterface::class);
+        $provider
+            ->expects($this->once())
+            ->method('getBuilder')
+            ->willReturn($builder);
+
         $response = $this->createMock(ResponseInterface::class);
         $response
             ->expects($this->once())
             ->method('getBody')
-            ->willReturn($builder);
+            ->willReturn($provider);
 
         $response
             ->expects($this->exactly(2))
@@ -156,6 +164,8 @@ class HateoasMiddlewareTest extends TestCase
             ->with($request)
             ->willReturn($response);
 
+        $router = $this->createMock(RouterInterface::class);
+
         /**
          * @var AuthorizerInterface $authorizer
          * @var ExpanderInterface $expander
@@ -164,8 +174,9 @@ class HateoasMiddlewareTest extends TestCase
          * @var MiddlewareChainInterface $chain
          * @var ResponseInterface $response
          * @var SecurityServiceInterface $securityService
+         * @var RouterInterface $router
          */
-        $middleware = new HateoasMiddleware($authorizer, $expander, $serializer, $securityService);
+        $middleware = new HateoasMiddleware($authorizer, $expander, $serializer, $securityService, $router);
 
         $this->assertSame($response, $middleware->process($request, $chain));
     }
@@ -280,6 +291,8 @@ class HateoasMiddlewareTest extends TestCase
             ->with($request)
             ->willReturn($response);
 
+        $router = $this->createMock(RouterInterface::class);
+
         /**
          * @var AuthorizerInterface $authorizer
          * @var ExpanderInterface $expander
@@ -287,8 +300,9 @@ class HateoasMiddlewareTest extends TestCase
          * @var RequestInterface $request
          * @var MiddlewareChainInterface $chain
          * @var SecurityServiceInterface $securityService
+         * @var RouterInterface $router
          */
-        $middleware = new HateoasMiddleware($authorizer, $expander, $serializer, $securityService);
+        $middleware = new HateoasMiddleware($authorizer, $expander, $serializer, $securityService, $router);
 
         $response = $middleware->process($request, $chain);
         $this->assertInstanceOf(LinkNotFoundProblemDetails::class, $response->getBody());
@@ -404,6 +418,8 @@ class HateoasMiddlewareTest extends TestCase
             ->with($request)
             ->willReturn($response);
 
+        $router = $this->createMock(RouterInterface::class);
+
         /**
          * @var AuthorizerInterface $authorizer
          * @var ExpanderInterface $expander
@@ -411,8 +427,9 @@ class HateoasMiddlewareTest extends TestCase
          * @var RequestInterface $request
          * @var MiddlewareChainInterface $chain
          * @var SecurityServiceInterface $securityService
+         * @var RouterInterface $router
          */
-        $middleware = new HateoasMiddleware($authorizer, $expander, $serializer, $securityService);
+        $middleware = new HateoasMiddleware($authorizer, $expander, $serializer, $securityService, $router);
 
         $response = $middleware->process($request, $chain);
         $this->assertInstanceOf(LinkNotEmbeddableProblemDetails::class, $response->getBody());
@@ -528,6 +545,8 @@ class HateoasMiddlewareTest extends TestCase
             ->with($request)
             ->willReturn($response);
 
+        $router = $this->createMock(RouterInterface::class);
+
         /**
          * @var AuthorizerInterface $authorizer
          * @var ExpanderInterface $expander
@@ -535,8 +554,9 @@ class HateoasMiddlewareTest extends TestCase
          * @var RequestInterface $request
          * @var MiddlewareChainInterface $chain
          * @var SecurityServiceInterface $securityService
+         * @var RouterInterface $router
          */
-        $middleware = new HateoasMiddleware($authorizer, $expander, $serializer, $securityService);
+        $middleware = new HateoasMiddleware($authorizer, $expander, $serializer, $securityService, $router);
 
         $response = $middleware->process($request, $chain);
         $this->assertInstanceOf(AttributeNotFoundProblemDetails::class, $response->getBody());

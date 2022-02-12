@@ -5,6 +5,7 @@ namespace ExtendsFramework\Hateoas\Framework\Http\Middleware\Hateoas;
 
 use ExtendsFramework\Authorization\AuthorizerInterface;
 use ExtendsFramework\Hateoas\Builder\BuilderInterface;
+use ExtendsFramework\Hateoas\Builder\BuilderProviderInterface;
 use ExtendsFramework\Hateoas\Builder\Exception\AttributeNotFound;
 use ExtendsFramework\Hateoas\Builder\Exception\LinkNotEmbeddable;
 use ExtendsFramework\Hateoas\Builder\Exception\LinkNotFound;
@@ -18,6 +19,7 @@ use ExtendsFramework\Http\Middleware\MiddlewareInterface;
 use ExtendsFramework\Http\Request\RequestInterface;
 use ExtendsFramework\Http\Response\Response;
 use ExtendsFramework\Http\Response\ResponseInterface;
+use ExtendsFramework\Router\RouterInterface;
 use ExtendsFramework\Security\SecurityServiceInterface;
 
 class HateoasMiddleware implements MiddlewareInterface
@@ -44,9 +46,18 @@ class HateoasMiddleware implements MiddlewareInterface
     private SerializerInterface $serializer;
 
     /**
+     * Security service.
+     *
      * @var SecurityServiceInterface
      */
     private SecurityServiceInterface $securityService;
+
+    /**
+     * Router.
+     *
+     * @var RouterInterface
+     */
+    private RouterInterface $router;
 
     /**
      * HateoasMiddleware constructor.
@@ -55,17 +66,20 @@ class HateoasMiddleware implements MiddlewareInterface
      * @param ExpanderInterface        $expander
      * @param SerializerInterface      $serializer
      * @param SecurityServiceInterface $securityService
+     * @param RouterInterface          $router
      */
     public function __construct(
-        AuthorizerInterface $authorizer,
-        ExpanderInterface $expander,
-        SerializerInterface $serializer,
-        SecurityServiceInterface $securityService
+        AuthorizerInterface      $authorizer,
+        ExpanderInterface        $expander,
+        SerializerInterface      $serializer,
+        SecurityServiceInterface $securityService,
+        RouterInterface          $router
     ) {
         $this->authorizer = $authorizer;
         $this->expander = $expander;
         $this->serializer = $serializer;
         $this->securityService = $securityService;
+        $this->router = $router;
     }
 
     /**
@@ -86,6 +100,10 @@ class HateoasMiddleware implements MiddlewareInterface
 
         $response = $chain->proceed($request);
         $builder = $response->getBody();
+        if ($builder instanceof BuilderProviderInterface) {
+            $builder = $builder->getBuilder($this->router);
+        }
+
         if ($builder instanceof BuilderInterface) {
             try {
                 $serialized = $this
