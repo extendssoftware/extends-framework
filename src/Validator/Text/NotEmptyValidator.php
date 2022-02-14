@@ -12,7 +12,7 @@ use ExtendsFramework\Validator\Type\StringValidator;
 class NotEmptyValidator extends AbstractValidator
 {
     /**
-     * When text is and empty string.
+     * When text is an empty string.
      *
      * @var string
      */
