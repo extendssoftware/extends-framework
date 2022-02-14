@@ -27,6 +27,7 @@ use ExtendsFramework\Validator\Logical\OrValidator;
 use ExtendsFramework\Validator\Logical\XorValidator;
 use ExtendsFramework\Validator\Number\BetweenValidator;
 use ExtendsFramework\Validator\Object\PropertiesValidator;
+use ExtendsFramework\Validator\Other\AllowEmptyStringValidator;
 use ExtendsFramework\Validator\Other\Coordinates\Coordinate\LatitudeValidator;
 use ExtendsFramework\Validator\Other\Coordinates\Coordinate\LongitudeValidator;
 use ExtendsFramework\Validator\Other\Coordinates\CoordinatesValidator;
@@ -91,6 +92,7 @@ class ValidatorConfigLoader implements LoaderInterface
                     CoordinatesValidator::class => CoordinatesValidator::class,
                     LatitudeValidator::class => LatitudeValidator::class,
                     LongitudeValidator::class => LongitudeValidator::class,
+                    AllowEmptyStringValidator::class => AllowEmptyStringValidator::class,
                     NullableValidator::class => NullableValidator::class,
                     // Text
                     DateTimeValidator::class => DateTimeValidator::class,
